@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko">
+<head>
+<!-- RP_IMAGES: 기존 GitBook 이미지 경로를 GitHub Pages에서도 표시하도록 연결됨. 이미지를 직접 저장하려면 src를 images/파일명으로 교체하면 됩니다. -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EXIT RP - Official Guide</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              accent: '#3b82f6',
+              purple: '#8b5cf6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: 'Inter', sans-serif; transition: background-color 0.25s, color 0.25s; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+    .dark ::-webkit-scrollbar-thumb { background: #1e293b; }
+  </style>
+<style id="rp-final-fixes">
+  /* Exit LAW 접힘 상태: 하위 카테고리 자체의 외곽 박스/테두리 제거 */
+  #story-rp-menu, #org-rp-menu { border-left: 0 !important; }
+  #story-rp-menu > .nav-btn, #org-rp-menu > .nav-btn { border: 0 !important; box-shadow: none !important; }
+  /* RP 위치 이미지는 화면 폭을 넘지 않도록 유지 */
+  main .doc-page img { max-width: 100%; height: auto; object-fit: contain; }
+</style>
+<style id="compact-rp-layout">
+  /* RP 법률 본문 컴팩트 레이아웃 */
+  main .doc-page {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+  }
+
+  main .doc-page.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem !important;
+  }
+
+  main .doc-page .space-y-8 > :not([hidden]) ~ :not([hidden]),
+  main .doc-page .space-y-6 > :not([hidden]) ~ :not([hidden]),
+  main .doc-page .space-y-5 > :not([hidden]) ~ :not([hidden]),
+  main .doc-page .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: .65rem !important;
+  }
+
+  main .doc-page section {
+    margin-bottom: .75rem !important;
+  }
+
+  main .doc-page h1 {
+    font-size: clamp(1.35rem, 2.2vw, 2rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: .5rem !important;
+  }
+
+  main .doc-page h2 {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+    padding-bottom: .35rem !important;
+    margin-bottom: .5rem !important;
+  }
+
+  main .doc-page h3 {
+    font-size: .9rem !important;
+    line-height: 1.35 !important;
+  }
+
+  main .doc-page p,
+  main .doc-page li,
+  main .doc-page div,
+  main .doc-page span {
+    line-height: 1.5 !important;
+  }
+
+  main .doc-page ul,
+  main .doc-page ol {
+    margin-top: .25rem !important;
+    margin-bottom: .25rem !important;
+  }
+
+  main .doc-page li {
+    margin-bottom: .15rem !important;
+  }
+
+  main .doc-page .p-4 {
+    padding: .7rem !important;
+  }
+
+  main .doc-page .p-5 {
+    padding: .8rem !important;
+  }
+
+  main .doc-page .p-6 {
+    padding: .9rem !important;
+  }
+
+  main .doc-page .gap-6 {
+    gap: .75rem !important;
+  }
+
+  main .doc-page .gap-5 {
+    gap: .65rem !important;
+  }
+
+  main .doc-page img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  main .doc-page figure {
+    max-width: 100%;
+    margin: .6rem auto !important;
+    overflow: hidden;
+  }
+
+  main .doc-page pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  /* 긴 RP 문서가 가로로 잘리지 않도록 */
+  main .doc-page table,
+  main .doc-page .overflow-x-auto {
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      padding: 1rem !important;
+    }
+
+    main .doc-page h1 {
+      font-size: 1.3rem !important;
+    }
+
+    main .doc-page {
+      font-size: .78rem;
+    }
+
+    main .doc-page img {
+      max-height: 360px;
+    }
+  }
+</style>
+<style id="story-layout-fix">
+      main > .doc-page { width: 100%; min-width: 0; }
+      main > .doc-page.hidden { display: none !important; }
+    </style></head>
+<body class="bg-slate-50 text-slate-800 dark:bg-[#0b0f19] dark:text-slate-100 h-screen flex flex-col overflow-hidden antialiased selection:bg-blue-500 selection:text-white">
+<!-- 1. 상단 헤더 -->
+<header class="h-16 border-b border-slate-200 dark:border-[#1e293b] bg-white/90 dark:bg-[#0e1424]/80 backdrop-blur px-6 flex items-center justify-between shrink-0 z-30 transition-colors">
+<div class="flex items-center space-x-3 w-1/4">
+<div class="w-10 h-10 flex items-center justify-center shrink-0">
+<svg class="w-9 h-9 drop-shadow-md" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="exitGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#a855f7"></stop>
+<stop offset="50%" stop-color="#6366f1"></stop>
+<stop offset="100%" stop-color="#3b82f6"></stop>
+</lineargradient>
+</defs>
+<path d="M 18 20 L 82 20 L 62 42 L 38 42 Z" fill="url(#exitGrad)" stroke="#c084fc" stroke-width="1.5"></path>
+<path d="M 22 45 L 62 45 L 62 36 L 86 50 L 62 64 L 62 55 L 22 55 Z" fill="url(#exitGrad)" stroke="#e879f9" stroke-width="1.5"></path>
+<path d="M 38 58 L 62 58 L 82 80 L 18 80 Z" fill="url(#exitGrad)" stroke="#c084fc" stroke-width="1.5"></path>
+</svg>
+</div>
+<div>
+<h1 class="font-bold text-lg leading-tight tracking-tight text-slate-900 dark:text-white flex items-center gap-2">EXIT RP</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Official Guide</p>
+</div>
+</div>
+<div class="flex items-center justify-center space-x-3 flex-1">
+<nav class="hidden md:flex items-center space-x-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+<button class="px-3.5 py-1.5 rounded-lg hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" onclick="handleCategoryClick(event, 'server-contents-overview', 'GUIDE', '📔 서버 컨텐츠', 'contents-menu', 'contents-chevron')">GUIDE</button>
+<button class="px-3.5 py-1.5 rounded-lg hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" onclick="handleCategoryClick(event, 'job-overview', 'GUIDE &gt; 📔 서버 컨텐츠', '💼 직업안내', 'job-submenu', 'job-chevron')">서버 컨텐츠</button>
+<button class="px-3.5 py-1.5 rounded-lg text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/30" onclick="openLawCategory()">Exit LAW</button>
+</nav>
+<button class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-[#131c31] border border-slate-300 dark:border-[#1e293b] text-xs text-slate-700 dark:text-slate-300 hover:border-blue-500 shadow-sm transition-all ml-2" id="darkModeBtn" onclick="toggleDarkMode()">
+<i class="fa-solid fa-moon text-blue-500" id="themeIcon"></i>
+<span class="font-semibold" id="themeText">Dark</span>
+</button>
+</div>
+<div class="flex items-center justify-end space-x-3 w-1/4">
+<div class="relative hidden sm:block w-44 lg:w-52">
+<i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+<input class="w-full bg-slate-100 dark:bg-[#0b0f19] border border-slate-300 dark:border-[#1e293b] rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-500 transition" id="searchInput" onkeyup="filterMenu()" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-3.5 py-2 rounded-lg flex items-center gap-2 shadow-md shadow-blue-600/20 transition">
+<i class="fa-solid fa-server"></i>
+<span>EXIT RP</span>
+</button>
+</div>
+</header>
+<!-- 2. 메인 컨테이너 -->
+<div class="flex flex-1 overflow-hidden">
+<!-- 좌측 사이드바 -->
+<aside class="w-64 bg-white dark:bg-[#0e1424] border-r border-slate-200 dark:border-[#1e293b] shrink-0 hidden md:flex flex-col transition-colors">
+<div class="p-4 space-y-4 overflow-y-auto text-xs" id="sidebarNav">
+<!-- GUIDE 대카테고리 -->
+<div>
+<button class="w-full text-left flex items-center justify-between px-2 mb-2 font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider text-[11px] hover:text-slate-700 dark:hover:text-slate-300 transition" onclick="handleCategoryClick(event, 'server-contents-overview', 'GUIDE', '📔 서버 컨텐츠', 'guide-menu', 'guide-chevron')">
+<span>GUIDE</span>
+<span class="p-1 hover:text-blue-500" onclick="toggleSubMenu('guide-menu', 'guide-chevron', event)">
+<i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200" id="guide-chevron"></i>
+</span>
+</button>
+<div class="space-y-2 pl-1" id="guide-menu">
+<div>
+<button class="w-full text-left flex items-center justify-between px-2 py-1.5 rounded-lg font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="handleCategoryClick(event, 'server-contents-overview', 'GUIDE', '📔 서버 컨텐츠', 'contents-menu', 'contents-chevron')">
+<span class="flex items-center gap-1.5">📔 서버 컨텐츠</span>
+<span class="p-1 text-slate-400 hover:text-blue-500" onclick="toggleSubMenu('contents-menu', 'contents-chevron', event)">
+<i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200" id="contents-chevron"></i>
+</span>
+</button>
+<div class="space-y-1 pl-2 border-l border-slate-200 dark:border-slate-800 ml-2 mt-1" id="contents-menu">
+<button class="nav-btn w-full text-left block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="switchDoc('player-rules', 'GUIDE &gt; 📔 서버 컨텐츠', '👥 플레이 기준표')">
+                  👥 플레이 기준표
+                </button>
+<div>
+<button class="w-full text-left flex items-center justify-between px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60 font-semibold transition" onclick="handleCategoryClick(event, 'job-overview', 'GUIDE &gt; 📔 서버 컨텐츠', '💼 직업안내', 'job-submenu', 'job-chevron')">
+<span class="flex items-center gap-1.5">💼 직업안내</span>
+<span class="p-1 text-slate-400 hover:text-blue-500" onclick="toggleSubMenu('job-submenu', 'job-chevron', event)">
+<i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200" id="job-chevron"></i>
+</span>
+</button>
+<div class="pl-3 mt-1 space-y-1 border-l border-slate-200 dark:border-slate-700 ml-2.5" id="job-submenu">
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('job-taxi-company', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '택시공')">• 택시공</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('job-taxi-private', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '개인택시')">• 개인택시</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('job-drug-dealer', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '마약밀매상')">• 마약밀매상</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('job-trucker', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '트럭기사')">• 트럭기사</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('job-delivery', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '배달부')">• 배달부</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('job-newspaper', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '신문배달부')">• 신문배달부</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('job-unemployed', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '백수')">• 백수</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Exit LAW 카테고리 -->
+<div>
+<button class="w-full text-left flex items-center justify-between px-2 mb-2 font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider text-[11px] hover:text-slate-700 dark:hover:text-slate-300 transition" onclick="handleLawCategoryClick(event)">
+<span>Exit LAW</span>
+<span class="p-1 hover:text-blue-500" onclick="toggleLawMenu(event)">
+<i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200" id="law-chevron"></i>
+</span>
+</button>
+<div class="space-y-1 pl-1" id="law-menu">
+<button class="nav-btn w-full text-left block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition font-semibold" onclick="switchDoc('law-rules', 'Exit LAW', '📋 서버 제제법률')">
+              📋 서버 제제법률
+            </button>
+<button class="nav-btn w-full text-left block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="switchDoc('law-integrated', 'Exit LAW', '📋 통합 서버법률')">
+              📋 통합 서버법률
+            </button>
+<button class="nav-btn w-full text-left block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="switchDoc('law-policy', 'Exit LAW', '📋 팩션 통합법률')">
+              📋 팩션 통합법률
+            </button>
+<button class="nav-btn w-full text-left block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="switchDoc('law-newbie', 'Exit LAW', '📋 뉴비 보호법')">
+              📋 뉴비 보호법
+            </button>
+<button class="nav-btn w-full text-left block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="switchDoc('law-safezone', 'Exit LAW', '📋 보호구역 법률')">
+              📋 보호구역 법률
+            </button>
+<button class="nav-btn w-full text-left block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="switchDoc('law-integrated-rp', 'Exit LAW', '📋 통합 RP 법률')">
+              📋 통합 RP 법률
+            </button>
+</div>
+<!-- 📋 스토리 RP 법률 -->
+<div>
+<button class="w-full text-left flex items-center justify-between px-2.5 py-2 rounded-lg text-[11px] text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="handleCategoryClick(event, 'doc-law-story-overview', 'Exit LAW &gt; 📋 스토리 RP 법률', '📋 스토리 RP 법률', 'story-rp-menu', 'story-rp-chevron')">
+<span>📋 스토리 RP 법률</span>
+<span class="p-1 text-slate-400 hover:text-blue-500" onclick="toggleSubMenu('story-rp-menu', 'story-rp-chevron', event)">
+<i class="fa-solid fa-chevron-down text-[9px] transition-transform duration-200" id="story-rp-chevron"></i>
+</span>
+</button>
+<div class="hidden pl-3 mt-1 space-y-1 border-l border-slate-200 dark:border-slate-700 ml-2.5" id="story-rp-menu">
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-0', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 빈집 RP ]')">[ 빈집 RP ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-1', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ ATM RP ]')">[ ATM RP ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-2', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 편의점 RP ]')">[ 편의점 RP ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-3', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 보석상 ]')">[ 보석상 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-4', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 남부은행 ]')">[ 남부은행 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-5', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 북부은행 ]')">[ 북부은행 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-6', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 닭공장 ]')">[ 닭공장 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-7', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 도주 ]')">[ 도주 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-8', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 즉흥 ]')">[ 즉흥 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-9', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 수배 ]')">[ 수배 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-story-10', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 영장 ]')">[ 영장 ]</button>
+</div>
+</div>
+<!-- 📋 조직 RP 법률 -->
+<div>
+<button class="w-full text-left flex items-center justify-between px-2.5 py-2 rounded-lg text-[11px] text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition" onclick="handleCategoryClick(event, 'doc-law-org-overview', 'Exit LAW &gt; 📋 조직 RP 법률', '📋 조직 RP 법률', 'org-rp-menu', 'org-rp-chevron')">
+<span>📋 조직 RP 법률</span>
+<span class="p-1 text-slate-400 hover:text-blue-500" onclick="toggleSubMenu('org-rp-menu', 'org-rp-chevron', event)">
+<i class="fa-solid fa-chevron-down text-[9px] transition-transform duration-200" id="org-rp-chevron"></i>
+</span>
+</button>
+<div class="hidden pl-3 mt-1 space-y-1 border-l border-slate-200 dark:border-slate-700 ml-2.5" id="org-rp-menu">
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-org-0', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 지상 C ]')">[ 지상 C ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-org-1', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 지상 D ]')">[ 지상 D ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-org-2', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 남공 게릴라 ]')">[ 남공 게릴라 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-org-3', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 사유지 게릴라 ]')">[ 사유지 게릴라 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-org-4', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 카지노 게릴라 ]')">[ 카지노 게릴라 ]</button>
+<button class="nav-btn w-full text-left block px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/40 transition" onclick="switchDoc('law-org-5', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 밀공장 게릴라 ]')">[ 밀공장 게릴라 ]</button>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- 중앙 본문 -->
+<main class="flex-1 overflow-y-auto px-6 py-8 md:px-12 bg-slate-50 dark:bg-[#0b0f19] transition-colors">
+<div class="max-w-5xl mx-auto space-y-6">
+<!-- 브레드크럼 -->
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800 pb-4">
+<div class="flex items-center space-x-2 font-medium">
+<span>HOME</span>
+<i class="fa-solid fa-chevron-right text-[9px]"></i>
+<span id="breadcrumbCategory">Exit LAW</span>
+<i class="fa-solid fa-chevron-right text-[9px]"></i>
+<span class="text-slate-900 dark:text-white font-semibold" id="breadcrumbTitle">📋 서버 제제법률</span>
+</div>
+<span id="lastUpdated">최근 업데이트: 2026년 8월 22일</span>
+</div>
+<!-- 📔 서버 컨텐츠 개요 -->
+<div class="doc-page hidden space-y-6" id="doc-server-contents-overview">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">📔 서버 컨텐츠</h1>
+<p class="text-sm text-slate-600 dark:text-slate-400">아래의 하위 문서를 선택하여 세부 가이드를 확인하세요.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('player-rules', 'GUIDE &gt; 📔 서버 컨텐츠', '👥 플레이 기준표')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">👥 플레이 기준표</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-overview', 'GUIDE &gt; 📔 서버 컨텐츠', '💼 직업안내')">
+<div>
+<div class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">💼 직업안내</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-1">하위 문서 7개</div>
+</div>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+</div>
+</div>
+<!-- 👥 플레이 기준표 -->
+<div class="doc-page hidden space-y-6" id="doc-player-rules">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">👥 플레이 기준표</h1>
+<div class="rounded-xl border border-blue-200 dark:border-blue-500/30 bg-blue-50/70 dark:bg-blue-950/20 p-5 space-y-3 shadow-sm backdrop-blur">
+<div class="flex items-center gap-2.5 text-blue-700 dark:text-blue-400 font-bold text-sm">
+<span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-500/15 text-blue-600 dark:text-blue-400">
+<i class="fa-solid fa-circle-info text-xs"></i>
+</span>
+<span>EXIT RP 플레이어 안내 수칙</span>
+</div>
+<div class="pl-2.5 space-y-2.5 text-xs md:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+<div>• EXIT RP에선 다음 아래와 같이 플레이어 기준을 정해둡니다.</div>
+<div>• 원활한 RP 환경을 위해 모든 플레이어는 아래 기준을 반드시 준수해 주시기 바랍니다.</div>
+</div>
+</div>
+<!-- 플레이 기준표 -->
+<div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#131c31] shadow-sm">
+<table class="w-full text-left border-collapse text-xs md:text-sm">
+<thead class="bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 border-b border-slate-200 dark:border-slate-800 font-bold">
+<tr>
+<th class="py-3.5 px-4 min-w-[180px]">엑시트</th>
+<th class="py-3.5 px-4 min-w-[180px]">타서버</th>
+<th class="py-3.5 px-4 min-w-[180px]">기준</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-semibold">팩션직</td>
+<td class="py-3.5 px-4 font-semibold">시민직</td>
+<td class="py-3.5 px-4"><span class="inline-flex items-center gap-2 font-semibold text-emerald-500"><span>✅</span> 가능</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-semibold">팩션직</td>
+<td class="py-3.5 px-4 font-semibold">팩션직</td>
+<td class="py-3.5 px-4"><span class="inline-flex items-center gap-2 font-semibold text-rose-500"><span>❌</span> 불가</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-semibold">팩션직</td>
+<td class="py-3.5 px-4 font-semibold">관리자</td>
+<td class="py-3.5 px-4"><span class="inline-flex items-center gap-2 font-semibold text-rose-500"><span>❌</span> 불가</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-semibold">시민직</td>
+<td class="py-3.5 px-4 font-semibold">관리자</td>
+<td class="py-3.5 px-4"><span class="inline-flex items-center gap-2 font-semibold text-rose-500"><span>❌</span> 불가</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-semibold">시민직</td>
+<td class="py-3.5 px-4 font-semibold">팩션직</td>
+<td class="py-3.5 px-4"><span class="inline-flex items-center gap-2 font-semibold text-emerald-500"><span>✅</span> 가능</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-semibold">시민직</td>
+<td class="py-3.5 px-4 font-semibold">시민직</td>
+<td class="py-3.5 px-4"><span class="inline-flex items-center gap-2 font-semibold text-emerald-500"><span>✅</span> 가능</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 💼 직업안내 개요 -->
+<div class="doc-page hidden space-y-6" id="doc-job-overview">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">💼 직업안내</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-taxi-company', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '택시공')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500">🚕 택시공</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-taxi-private', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '개인택시')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500">🚖 개인택시</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-drug-dealer', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '마약밀매상')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500">💊 마약밀매상</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-trucker', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '트럭기사')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500">🚚 트럭기사</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-delivery', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '배달부')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500">🛵 배달부</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-newspaper', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '신문배달부')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500">📰 신문배달부</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('job-unemployed', 'GUIDE &gt; 📔 서버 컨텐츠 &gt; 💼 직업안내', '백수')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500">🛋️ 백수</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 text-xs"></i>
+</div>
+</div>
+</div>
+<!-- 세부 직업 페이지 -->
+<div class="doc-page hidden space-y-4" id="doc-job-taxi-company"><h1 class="text-3xl font-bold">🚕 택시공</h1><p class="text-sm text-slate-400">택시 회사 소속 기사 가이드입니다.</p></div>
+<div class="doc-page hidden space-y-4" id="doc-job-taxi-private"><h1 class="text-3xl font-bold">🚖 개인택시</h1><p class="text-sm text-slate-400">개인택시 가이드입니다.</p></div>
+<div class="doc-page hidden space-y-4" id="doc-job-drug-dealer"><h1 class="text-3xl font-bold">💊 마약밀매상</h1><p class="text-sm text-slate-400">마약밀매상 가이드입니다.</p></div>
+<div class="doc-page hidden space-y-4" id="doc-job-trucker"><h1 class="text-3xl font-bold">🚚 트럭기사</h1><p class="text-sm text-slate-400">트럭기사 가이드입니다.</p></div>
+<div class="doc-page hidden space-y-4" id="doc-job-delivery"><h1 class="text-3xl font-bold">🛵 배달부</h1><p class="text-sm text-slate-400">배달부 가이드입니다.</p></div>
+<div class="doc-page hidden space-y-4" id="doc-job-newspaper"><h1 class="text-3xl font-bold">📰 신문배달부</h1><p class="text-sm text-slate-400">신문배달부 가이드입니다.</p></div>
+<div class="doc-page hidden space-y-4" id="doc-job-unemployed"><h1 class="text-3xl font-bold">🛋️ 백수</h1><p class="text-sm text-slate-400">백수 안내입니다.</p></div>
+<!-- ⚖️ Exit LAW 개요 -->
+<div class="doc-page hidden space-y-6" id="doc-law-overview">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+<span>⚖️ Exit LAW</span>
+</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-rules', 'Exit LAW', '📋 서버 제제법률')">
+<div>
+<div class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">📋 서버 제제법률</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-1">서버 내 제재 기준 및 처벌 규정</div>
+</div>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-integrated', 'Exit LAW', '📋 통합 서버법률')">
+<div>
+<div class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">📋 통합 서버법률</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-1">서버 이용에 필요한 기본 법률 안내</div>
+</div>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-policy', 'Exit LAW', '📋 팩션 통합법률')">
+<div>
+<div class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">📋 팩션 통합법률</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-1">팩션 활동 및 권한 관련 규정</div>
+</div>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-newbie', 'Exit LAW', '📋 뉴비 보호법')">
+<div>
+<div class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">📋 뉴비 보호법</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-1">뉴비 보호 및 관련 기준 안내</div>
+</div>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-safezone', 'Exit LAW', '📋 보호구역 법률')">
+<div>
+<div class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">📋 보호구역 법률</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-1">보호구역 내 RP 및 행동 기준</div>
+</div>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-integrated-rp', 'Exit LAW', '📋 통합 RP 법률')">
+<div>
+<div class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">📋 통합 RP 법률</div>
+<div class="text-xs text-slate-500 dark:text-slate-400 mt-1">스토리 RP 및 공통 RP 진행 기준</div>
+</div>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+</div>
+</div>
+<!-- 📋 서버 제제법률 상세 페이지 -->
+<div class="doc-page space-y-6" id="doc-law-rules">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+<span>📋 서버 제제법률</span>
+</h1>
+<!-- 상단 기본 주의사항 경고 박스 -->
+<div class="rounded-xl border border-red-500/30 bg-red-500/10 p-5 space-y-2.5 backdrop-blur text-xs md:text-sm">
+<div class="flex items-center gap-2 text-red-500 font-bold text-base mb-1">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<span>필독 안내 수칙</span>
+</div>
+<div class="flex items-start gap-2 text-slate-800 dark:text-slate-200">
+<span class="text-red-500 font-bold">•</span>
+<span>본 규정은 원활한 서버 운영을 위해 제정되며, 운영진 판단에 따라 언제든 수정·삭제될 수 있습니다.</span>
+</div>
+<div class="flex items-start gap-2 text-slate-800 dark:text-slate-200">
+<span class="text-red-500 font-bold">•</span>
+<span>안읽어 발생하는 모든 책임은 이용자 본인에게 있습니다.</span>
+</div>
+<div class="flex items-start gap-2 text-slate-800 dark:text-slate-200">
+<span class="text-red-500 font-bold">•</span>
+<span>법률에 없는 내용이라도 관리진 판단하에 처벌 진행이 될 수 있음을 알려드립니다.</span>
+</div>
+</div>
+<!-- 제제법률 표 (Table) -->
+<div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#131c31] shadow-sm">
+<table class="w-full text-left border-collapse text-xs md:text-sm">
+<thead class="bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 border-b border-slate-200 dark:border-slate-800 font-bold">
+<tr>
+<th class="py-3.5 px-4 min-w-[120px]">죄목</th>
+<th class="py-3.5 px-4 min-w-[120px]">구금 (분 / 시간)</th>
+<th class="py-3.5 px-4 min-w-[260px]">행위 및 부가 설명</th>
+<th class="py-3.5 px-4 min-w-[280px]">비고</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">관리자 기만</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최소 100분<br/>최대 300분</td>
+<td class="py-3.5 px-4 leading-relaxed">사건처리 도중 관리자 앞에서 욕설 및 관리자 말을 끊는 행위<br/>관리자에게 욕설을 하는 행위</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">
+                    • 관리자 / 스태프의 정당한 지시를 불이행 하는 경우<br/>
+                    • 사건 처리 요청을 정당한 사유 없이 거부한 경우<br/>
+                    • 사건처리 도중 디컨 및 잠수<br/>
+<span class="pl-2 block text-[11px] text-slate-500">ㄴ 잠수의 경우 사건처리 담당자가 유저를 연속 3번이상 호출 했음에도 미응답일 경우</span>
+<span class="pl-2 block text-[11px] text-slate-500">ㄴ 특별한 정당한 이유가 있었다면 제외</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">RP 중 디컨</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">120분 구금</td>
+<td class="py-3.5 px-4 leading-relaxed">고의로 디컨 / 끈 시간 시점 기준 10분이 지나도 안올때</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">당사자들과 합의 후 종료 혹은 합의 후 10분 이후 접속 시 제외</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">RP 3자개입</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">180분 구금</td>
+<td class="py-3.5 px-4 leading-relaxed">RP 중 관련없는 유저들이 와서 개입하여 방해 하는 경우</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">RP 중 관련없는 유저들이 와서 개입 하는 경우</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">RP 거부</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 120분 구금</td>
+<td class="py-3.5 px-4 leading-relaxed">RP 중 정당한 사유 없이 RP를 거부하는 행위</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">관리자 판단하에 정당하지 못한 사유일 시 처벌 대상</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">NON-RP</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 200분</td>
+<td class="py-3.5 px-4 leading-relaxed">현실에서 불가능한 행위들 할 경우</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">
+                    • F꾹 탈취 / 업기 들쳐매기 끌고가기 후 차량 탑승 및 운전<br/>
+                    • 공무원의 집행의 경우는 제외<br/>
+                    • 행동명령어 미사용의 경우<br/>
+                    • 버그차량 복사하여 RP 하는 경우<br/>
+                    • 기억RP
+                  </td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">BAD -RP</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 180분</td>
+<td class="py-3.5 px-4 leading-relaxed">
+                    지속적인 괴롭힘 / 살인 / 볼링 / 욕설 범퍼 등<br/>
+                    일반 욕설 최대 180분<br/>
+                    분쟁성 발언 / 분쟁유도 등
+                  </td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">
+<span class="block text-[11px]">ㄴ 분쟁성 발언 및 분쟁유도에 대한 판단은 사건처리 하는 모든 담당자가 우선 판단</span>
+<span class="block text-[11px]">ㄴ 사건처리에 영향을 줄 수 있는 반말이나, 욕설 및 권력남용을 하는 경우를 제외하고 모든 우선 순위는 사건처리담당자의 판단에 우선 적용</span>
+<span class="mt-1 block">• 현실에서 하면 안되는 행동을 할 경우</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">뉴비보호법</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 150분</td>
+<td class="py-3.5 px-4 leading-relaxed">
+                    선으로 뉴비에게 지속적으로 RP를 할 경우<br/>
+<span class="text-xs text-slate-400">(뉴비는 머리 위 새싹표시로 기준)</span>
+</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">뉴비가 선RP를 거는 경우 제외대상</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">사후보이스</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 40분</td>
+<td class="py-3.5 px-4 leading-relaxed">
+                    사망 시점의 사실 고지(브리핑)까지만 허용하며, 그 이후 상황 오더, 상대 위치 브리핑, 라이브 송출 등 RP에 영향을 미칠 수 있는 발언은 사후 보이스로 간주
+                  </td>
+<td class="py-3.5 px-4 text-slate-500">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">보호구역 RP</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 180분</td>
+<td class="py-3.5 px-4 leading-relaxed">보호구역에서의 RP / 일반 필드에서 보호구역으로 도주한 경우</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">
+                    • 공무원은 집행의 이유일 경우 가능하다.<br/>
+                    • 준보호구역 (공무원사유지) 에서 2번이상의 RP 유도 시 관리진 처벌 구금 최대 120분 집행
+                  </td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">2중RP</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 100분</td>
+<td class="py-3.5 px-4 leading-relaxed">동시에 2개이상의 RP를 하는 경우</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">일부 이유 혹은 특정 조직 RP에서는 제외 된다.</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition bg-red-500/5">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">핵사용 / 그래픽 / 부적절 패치</td>
+<td class="py-3.5 px-4 font-bold text-orange-500 dark:text-orange-400">서버 영구 이용제한</td>
+<td class="py-3.5 px-4 leading-relaxed">
+                    비인가 프로그램 사용<br/>
+                    RP에 이점을 가져가는 파일 패치 그래픽 패치 사용
+                  </td>
+<td class="py-3.5 px-4 leading-relaxed text-rose-400">
+                    허용되지 않는 부분 : 창문 없는 패치 / 노워터 그래픽 패치 / AI 파일 적용 등
+                  </td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">서버 시스템 악용</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 500분 구금</td>
+<td class="py-3.5 px-4 leading-relaxed">
+                    리붓(서버 재시작) 악용 등 시스템 한계를 이용하여 부당한 이득을 취한 자는 관리자 구금 500분 이상 또는 서버 이용제한
+                  </td>
+<td class="py-3.5 px-4 text-slate-500">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">마이크 변조</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 70분</td>
+<td class="py-3.5 px-4 leading-relaxed">마이크 변조 프로그램을 사용한 자는 최대 70분 구금 집행</td>
+<td class="py-3.5 px-4 text-slate-500">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">팩션 이모지 미부착</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">
+                    1차 : 구두경고<br/>
+                    2차 : 추방<br/>
+                    3차 : 구금 50분
+                  </td>
+<td class="py-3.5 px-4 leading-relaxed">팩션이모지를 부착하지 아니한 경우</td>
+<td class="py-3.5 px-4 text-slate-500">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">팩션 권한 남용</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 50분 구금</td>
+<td class="py-3.5 px-4 leading-relaxed">팩션 사이드공지 무분별한 도배 / 팩션 권한(수갑묶기/끌고가기/벌금 부과 등)을 남용한 경우</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">팩션 물품을 반납하지 아니한 경우</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">공무원 출근 잠수</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 120분 구금</td>
+<td class="py-3.5 px-4 leading-relaxed">공무원 출근 중 잠수한 자는 관리자 구금 120분 집행</td>
+<td class="py-3.5 px-4 text-slate-500">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">매매 법률 위반</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">구금 100분</td>
+<td class="py-3.5 px-4 leading-relaxed">매매·거래 관련 법률을 위반한 자는 물품 회수 및 관리자 구금 100분</td>
+<td class="py-3.5 px-4 text-slate-500">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">서버 비하</td>
+<td class="py-3.5 px-4 font-bold text-orange-500 dark:text-orange-400">최대 이용제한조치</td>
+<td class="py-3.5 px-4 leading-relaxed">서버를 비하한 자는 관리자 구금 / 서버 이용제한 조치</td>
+<td class="py-3.5 px-4 text-slate-500">-</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">RP 미숙지</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최소 60분<br/>최대 120분</td>
+<td class="py-3.5 px-4 leading-relaxed">서버에 있는 법률을 하나라도 미숙지 할 경우</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">RP 미숙지 부분이 많은 경우 최대 구금인 120분으로 집행</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition bg-red-500/5">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">현금거래</td>
+<td class="py-3.5 px-4 font-bold text-orange-500 dark:text-orange-400">서버이용제한</td>
+<td class="py-3.5 px-4 leading-relaxed">
+                    서버 내 모든 후원 아이템 및 아이템을 OOC 현실 현금 거래로 진행해서 할 경우
+                  </td>
+<td class="py-3.5 px-4 leading-relaxed text-rose-400">
+                    현금 거래 또는 이와 유사한 행위가 적발된 경우, 관리자 재량에 따라 계정 정지, 아이템 회수, 재화 몰수 등을 부과한다
+                  </td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">법률 미기재부분 판단</td>
+<td class="py-3.5 px-4 font-semibold text-orange-500 dark:text-orange-400">최대 구금 100분</td>
+<td class="py-3.5 px-4 leading-relaxed">법률에 없는 내용일지라도 관리자 재량하에 판단을 할 수 있음</td>
+<td class="py-3.5 px-4 leading-relaxed text-slate-400">
+                    법률에 없는 내용이라도 "법률에 없는데 왜 처벌해요" 라는 식의 말은 허용되지 않음.
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 📋 통합 RP 법률 -->
+<div class="doc-page hidden space-y-8" id="doc-law-integrated-rp">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">통합 RP 법률</h1>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-blue-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>정보</span></div>
+<h2 class="text-xl md:text-2xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">통합 RP 법률은 스토리 RP 법률에 의거해 진행될 수 있습니다.</h2>
+<ol class="list-decimal pl-5 space-y-2 leading-relaxed">
+<li>법률에 없는 내용이라고 하여도 이를 고의적으로 사용했다고 사건처리 담당자가 판단 시 관리자 처벌 진행될 수 있음을 알려드립니다.</li>
+<li>법률에 없는 내용에 대해선법률 건의에 남겨주시고 RP 전 궁금하신 부분은 고객센터로 남겨주세요.</li>
+<li>법률에 없는 내용에 대해선 사건처리 담당자의 판단 하에 추가진행 될 수 있음을 알려드립니다.</li>
+</ol>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">통합 기본 RP  규정안내</h3>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>모든 RP는 관리자 판단에 따라 중단되거나 무효 처리(없알)될 수 있다.</li>
+<li>RP 중 디컨이 발생했을 경우, 10분 이내 복귀하지 않으면 관리자 제재 대상이 될 수 있다.</li>
+<li>타당한 사유 없이 알피를 거부할 수 없다.</li>
+<li>RP 중단은 명확한 사유가 있어야 하며, 단순 핑 차이는 중단 사유로 인정되지 않는다.</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>주의</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>관리자 판단하에 심한 핑 문제일 경우 재RP가 진행될 수 있다.</li>
+<li>심한 핑차이란 텔포, 투명한 벽, 벽을 뚫는 행위를 뜻한다.</li>
+<li>재RP 이후에도 동일한 문제가 반복되면 해당 RP는 없알 처리된다.</li>
+<li>합당한 사유 없이 중단할 경우 관리자 제재가 적용될 수 있다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>RP 중단 시점은 채팅 기준으로 판단하며, 중단 당시 사망자는 살고 진행할 수 있다.</li>
+</ul>
+<p class="leading-relaxed">단, 엇각으로 인한 중단이며 가해자 시점이 1인칭일 경우 사망자는 그대로 진행한다. (핑 문제로 간주)</p>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>주의</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>피해자 영상에서 머리가 완전히 보이지 않을 경우 엇각으로 인정한다.</li>
+<li>피해자 기준 머리가 일부라도 보이지 않는 장면이 확인되어야 가해자 영상 확인이 가능</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>RP 중단 시 캐릭터는 중단 선언 시점의 위치에서 정지해야 한다.</li>
+<li>정당하지 않은 이유로 중단했을 경우, 패알 처리된다. (모든 사유 동일)</li>
+</ul>
+<div class="rounded-xl border border-rose-500/30 bg-rose-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-rose-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>경고</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>특별한 사유가 있을 경우, 관리자에게 허가받은 후 최대 2시간까지 중단 가능하다.</li>
+<li>공무직 팩션의 경우, 알피 중단/해제 시 사이드 공지 및 외부 공지를 통해 알려야 한다.</li>
+<li>조직 팩션의 경우, 최소 30분전에 외부 공지를 통해 알려야 한다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>강도 RP에서 강도 측이 패배했더라도 공무원은불법 물품(마약/검은돈 등)을 압수하여 개인소지 할 수 없다.</li>
+</ul>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-blue-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>정보</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>시간 초과 등으로 획득한 보석 또는 검은돈은 버리거나 스태프 호출 후 반납해야 한다.</li>
+<li>반납하지 않을 경우 관리자 제재가 적용된다.</li>
+<li>만약 공무원 측에서 압수 후 버리지 않을 경우 적발시 관리자 제제처리 진행</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>보석금은 1분당 300만원이며 관리자 구금은 보석금 사용이 불가하다.</li>
+<li>RP 중 재장전 없이 총기를 교체하는 행위(장전 스킵)는 금지된다</li>
+<li>구르기 스킵을 금지한다.</li>
+<li>서버 내 시스템(킬 로그)을 이용해 RP를 진행하는 행위는 금지된다.</li>
+<li>조직 RP의 경우, 쿨타임을 반드시 기록해야 한다.</li>
+<li>모든 RP에서 인간형이 아닌 스킨(꼬마 캐릭터 포함)과 치장 착용은 금지된다.</li>
+</ul>
+<div class="rounded-xl border border-rose-500/30 bg-rose-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-rose-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>경고</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>인간형이 아닌 스킨 착용 후 차량을 탑승하는 행위는 가능하지만, 공무 집행 중인 경찰/보안국 지시에 따라야 하며, 도주를 금지한다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>RP 중 사건처리담당자가 선임되면 해당 RP는 자동으로 중단 상태로 전환된다.</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>주의</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>스토리 RP/조직RP의 경우, 사건처리담당자 선임 후 관리자 처리가 있을 경우 해당 알피는 없알 처리된다.</li>
+<li>필드RP에서 관리자 처리가 있을 경우, 처벌 대상 제외한 인원은 재알 또는 부분재알 처리된다.</li>
+<li>법률 위반이 확인된 경우 관리자 선임 전 상호간 합의 후 피의자측의 패배로 처리할 수 있다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>리붓 공지 이후에는 새로운 RP를 시작할 수 없다. ( 리붓공지 이전 진행하던 RP 제외 )</li>
+<li>RP 중 진통제와 방탄복은 개수 제한 없이 사용할 수 있다.</li>
+<li>RP 중 비콘 사용은 금지된다. (일부 조직 RP는 예외)</li>
+<li>RP 구역을 벗어나거나 금지 구역에서 발포할 경우 패배 처리된다. (일부 조직 RP는 사망 처리)</li>
+<li>즉흥/수배 RP에서 도주자 또는 수배자가 패배한 경우 범죄 행위에 대한 가중처벌과 불법무기 및 불법 물건 압수 가능하다.</li>
+<li>RP에서 전멸 후 중단 불가하다. 단, 전멸 이후 NON-RP가 확인될 경우 중단이 가능하다.</li>
+<li>모든 RP 시 화면공유를 금지한다.</li>
+<li>RP진행 시 능력치에 버프를 주는 음식 섭취를 금지한다.</li>
+<li>사후 브리핑(마지막 본인 시점 브리핑은 가능)을 금지합니다.(적발 시 패배 처리)</li>
+</ul>
+<div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-emerald-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>안내</span></div>
+<p class="leading-relaxed">사후 브리핑의 기준은 상황 오더, 상대방 위치 브리핑 등 RP에 직접적인 영향이 갈 수 있는 발언을 기준으로 한다.</p>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>버그 차로 RP 진행을 금지한다.</li>
+<li>RP 중 Q엄폐 사용은 불가능하다. (일부 스토리RP제외)</li>
+<li>강도측은 스토리RP(은행/ATM/편의점/보석상) 공무원 허가 시 1분 이내로 RP 벨을 울려야 한다.(모든 인원이 RP 준비가 안된 상태로 공표 금지)</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>주의</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>공표는 모든 RP 참여 인원이 RP 장소에 도착한 후 진행되여야 한다.</li>
+<li>RP장소에 먼저 도착했더라도 공표를 안한 상태라면 공표한 사람이 RP 우선권을 갖는다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>경찰/보안국 합동RP는 대형 RP(남부은행/북부은행)와 영장RP만 가능하다.</li>
+<li>스토리 RP 종료 후 강도 패배 시 사망자리 이탈 및 숨는 행위(RP 거부) / 불법 무기를 돌려놓는 행위(시스템 악용)는 관리자 처벌 대상이다.</li>
+<li>공무원은 차량 번호판 및 머리위 이름 표기로 신원 확인 가능하다.</li>
+<li>공무원은 스토리 RP 전멸 후 사망자를 RP 범위 밖으로 이동시키기 위해 시체 끌기하는 행위는 가능하다.(시간 초과로 인한 보상 획득을 방지하기 위함) / 단 이외 상황에서 RP 중 시체 드래그는 불가하다.</li>
+<li>RP 중 살아있는 상태에서 레그돌을 금지한다.(사망한 인원이 살아난 상태에서 레그돌 하는 행위는 가능)</li>
+<li>엇각/우각/심한 핑차이로 사망하여 중단된 경우, 해당 문제로 인해 사망한 인원만 살아날 수 있다.</li>
+<li>무력진압 전 공무원/시민은 차량 사고, 배고픔, 추락사 등 단순 과실로 인해 사망한 경우 상대측에게 사망자의 고번/닉네임 알리고 소생한 후 RP에 참여할 수 있다.</li>
+</ul>
+<p class="leading-relaxed">EX ) 태식 무력진압 전 사망으로 소생</p>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>주의</span></div>
+<p class="leading-relaxed">단 , 무력진압 전 같은 강도/공무원 측에게 무기 또는 폭행으로 살해당한 경우 참여 불가</p>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>강도 패배 시 납부할 벌금을 보유하고 있지 않은 상태로 강도 RP를 진행할 경우 관리자 처벌 진행 된다.</li>
+<li>헬멧을 착용한 상태에서 모든 RP 진행 불가하다, 단 스킨의 제한성으로 인해 공무원 스킨중 헬멧(방탄X) 착용 스킨은 예외</li>
+<li>소형 RP ( 편의점 / 빈집 / ATM ) 는 풀보석금이 가능하다.</li>
+<li>RP 법률을 어길 경우, 상호간 협의를 통해 패알로 진행할 수 있다.(협의가 안될 경우, 관리자 처벌)</li>
+<li>모든 RP에서 특수 총기를 사용하려면 공무원측은 시작 무력진압 또는 허가 이후 강도측은 무력진압전 사용자 공표를 해야 한다 (하지 않을시 RP 패배처리)</li>
+<li>시민 중 동승자는 즉흥/수배/도주 등의 RP가 진행된 경우 영상 확인을 통해 RP에 가담하지 않았을 시 처벌 대상에서 제외될 수 있다.</li>
+<li>모든 RP 참여 시 음성방 (무전방 / 자음방)에 참여해야 한다.</li>
+<li>게릴라,지상 RP 걸린 조직은 지원가는 상황에서 도로교통법에 해당하지 않으나, 남용할 경우 서버 시스템 악용 처벌된다.</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>주의</span></div>
+<p class="leading-relaxed">조직은 RP 장소로 이동 중 도로교통법 위반으로 경찰에게 적발되어 정차 요청을 받을 경우, 조직 RP가 진행(또는 예정) 중인 상황임을 전달해야 한다.</p>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>쿨타임 초기화 전 공표를 금지하며, 공표 시 해당 공표는 무효처리 및 알피 법률 미숙지 처리된다</li>
+<li>RP 공표는 선포하는 측 대표 1명만 진행해야 한다.</li>
+<li>차량을 이용한 RP가 진행 중인 구역에 차량은 도난할 수 없다</li>
+<li>무릎에 앉히는 방식의 탑승은 차량별 허용 정원(인승)을 초과하지 않는 범위에서 허용한다.</li>
+</ul>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-blue-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>정보</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>4인승 차량은 무릎 탑승을 포함하여 최대 4인까지만 탑승 가능하며, 이를 초과하는 행위는 금지</li>
+<li>공무원 팩션 2인승 차량은 보조석에 한하여 무릎 탑승을 허용</li>
+<li>운전석 무릎 탑승은 금지한다.  공무 전쟁차량은 제외</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>Q엄폐가 사용 가능한 RP에서 Q엄폐 후 좌클릭 (총만 내밀고 쏘는 사격자세)은 금지</li>
+<li>공무원 측 열감지는 RP 대기장소에서 RP 진입공표후 대표자 한명만 사용 가능하며 반드시 열감지 종료 후 RP 시작을 해야한다.</li>
+<li>모든 RP는 영상녹화는 반드시 필수로 진행되야 한다.</li>
+<li>공무 팩션은 스토리 RP 종료 이후 사유지를 필수적으로 복귀해야 한다.</li>
+<li>모든 스토리 RP 중단은 최대 3번까지만 가능하며 3번 이후는 없알처리 된다.</li>
+</ul>
+<p class="leading-relaxed">ㄴ 단 법률적인 사건처리를 위한부분은 횟수 제한 X</p>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>도주 / 즉흥 / 수배 / 영장 / 납치 및 청부 의뢰를 제외한 RP에서는 시민 / 조직 / 타팩션 간의 협동RP 가능</li>
+<li>공무 팩션은 알피 종료 후 시체에 수갑을 묶을 수 있으며, 끌고가기를 할 수 있다.</li>
+<li>RP 중 B키 (이동속도증가행위)사용은 금지된다.</li>
+<li>무력진압 후 사망 할 경우 소생 후 RP 재참여는 불가능하며 실수로 살아날 경우 레그돌을 유지해야 한다.</li>
+<li>RP 중 관리자를 선임할 시 자동으로 알피는 중단 처리되며 관리자 선임 이후 유저간의 합의는 불가</li>
+<li>알피 인원 기준은 스코어보드 접속 인원이며, 잠수존 유저는 제외하며 잠수존을 제외한 기타 구역에서의 잠수는 인정X</li>
+<li>중단 사유는 다음과 같은 사유가 아닐 시 인정처리 되지 않으며 중단 시 중단 유저가 영상을 통해 사유를 입증해야 한다. 영상 기준은 피해자 시점</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 space-y-3 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold text-sm"><i class="fa-solid fa-circle-info"></i><span>주의</span></div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>심한 핑 차이 ( 관리자 판단 하 )</li>
+<li>엇각 / 우각</li>
+<li>모션버그 / 헤드버그 / 경직</li>
+<li>기타 법률에 의거한 법률문제로 인한 중단</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>RP 중 다운은 20초 내로 진행되어야 하며 사망 후 20초 뒤로 다운처리가 안될 시 RP 패배처리 될 수 있다.</li>
+<li>RP 중단은 RP 사망처리 혹은 전멸처리 이전에 진행해야 한다</li>
+<li>모든 RP 에서 중단 중 움직이는 행위는 금지되며 단, 사건 담당 관리자 또는 상대측과의 합의 하에 움직이는 행위는 허용한다</li>
+<li>강도가 스토리 RP 패배 후 집행 받는 과정에서 획득한 검은돈은 강도가 버려야 한다.</li>
+</ul>
+<p class="leading-relaxed">단 , 이전에 RP에서 획득했던 검은돈들은 제외된다.</p>
+<p class="leading-relaxed">+ 공무원 팩션은 강도가 버린 후 검은돈을 잘 버렸는지에 대해 확인할 권리가 있다.</p>
+</div>
+<!-- 📋 통합 서버법률 상세 페이지 -->
+<div class="doc-page hidden space-y-8" id="doc-law-integrated">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            기본 통합 서버 법률
+          </h1>
+<!-- 기초 서버 법률 -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>📌 기초 서버 법률</span>
+</h2>
+<div class="space-y-4 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+<h3 class="text-base font-bold text-slate-900 dark:text-slate-100">1. 서버 기본규정</h3>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>엑시트 서버 <span class="text-red-500 font-bold">피크타임은 오후 7시 ~ 11시까지</span>입니다.</li>
+<li>법률 위반 사항을 발견한 당사자, 목격자는 서버 관리팀에게 신고가 가능하다.</li>
+<li>
+                  욕설 또는 분쟁성 발언 관련 신고 시에는 <span class="text-red-500 font-bold">가해자와 피해자(신고자) 모두의 음성이 포함된 영상이 필요</span>하며, 해당 영상은 <span class="text-red-500 font-bold">사건 발생 후 24시간 이내에 제출</span>해야 한다.<br/>
+<span class="text-red-500 font-bold pl-2 block mt-1">• 참고로 영상에는 시간 정보가 명확히 표시되어야 합니다.</span>
+</li>
+<li>서버 플레이 시 영상녹화는 필수이며, 미녹화 시 발생하는 불이익에 대해서는 본인 책임이다.</li>
+<li>정상적인 서버 플레이 의사가 없다고 판단될 경우, 서버 이용이 영구 정지될 수 있으며 판단은 관리자 재량이다.</li>
+<li>
+                  경찰 수감이 종료된 후에는, RP 내에서 수감 전 상황을 기억할 수 없으며, 이를 어길 경우 관리자 제재 대상.<br/>
+<span class="pl-2 text-slate-500 dark:text-slate-400 block mt-1">ㄴ 단, 관리자 처리 건에 대해서는 기억 제한 규정이 적용되지 않는다.</span>
+</li>
+<li>서버 이용이 영구 제한된 유저의 데이터베이스는 관리자 판단에 따라 초기화 될 수 있으며 해당 유저의 차량 및 아이템은 서버에 판매될 수 있다.</li>
+<li>뉴라이프 시 장착된 총기가 사라지며, 이전의 일을 기억할 수 없다.</li>
+<li>
+                  닉네임은 한글 기준 최대 10자까지 가능하며, 공백 및 특수문자 사용은 제한되며 아래의경우도 제한된다.
+                  <ul class="list-none pl-4 space-y-1 mt-1 text-slate-500 dark:text-slate-400">
+<li>- 타인의 동의 없이 타인을 비방하기 위한 닉네임</li>
+<li>- 정치 및 종교 발언이 포함된 표현이 들어간 닉네임</li>
+<li>- 관리팀이 부적절하다고 판단하는 닉네임 등</li>
+<li>- 영어 닉네임 전체 금지</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 관리진 처벌 기본안내 -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>관리진 처벌 기본안내</span>
+</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>엑시트 서버의 법률을 안읽어 발생하는 문제에 대해 관리자는 처벌을 진행할 수 있으며 법률에 없는 내용이라도 관리자의 판단하에 처리될 수 있다.</li>
+<li>서버 관리팀에게 욕설 및 서버 비하발언 등 행동을 할 경우 관리진 처벌 대상이 될 수 있다.</li>
+<li>관리자 사건처리 도중 관련이 없는 3자의 개입은 관리자 처벌 대상이다.</li>
+<li>
+                버그차량을 이용한 모든 RP는 관리자 처벌 대상이 될 수 있다.<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">EX ) 자신의 차량을 복사해 빌려주는 행위 / 차량을 탈취해처리한경우처리X</span>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">ㄴ 고의적으로 이용한 경우 그 처벌은 가중되며 , 관리자 판단하에 고의적이 아닐 경우 1차 경고로 진행</span>
+</li>
+<li>비인가 프로그램은 " 서버 영구 이용제한 조치 " 처벌이 진행된다.</li>
+<li>
+                서버에서 허락하지 않는 그래픽을 통해 RP에 대한 이점을 가져가는 행위는 서버차단조치 진행<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">- 불가범위 : 창문없는 그래픽 / 노워터 그래픽</span>
+</li>
+<li>관리팀의 지시를 따르지 않을 경우 관리자 처벌이 가능하다.</li>
+<li>고의적으로 알피 진행을 방해할 경우 관리자 처벌이 가능하다.</li>
+<li>NON - RP / BAD - RP는 관리자 처벌이 가능하다.</li>
+</ul>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 디스코드 기본안내 -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>디스코드 기본안내</span>
+</h2>
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">
+              디스코드의 원활한 이용을 위하여 아래 항목을 위반한 경우 최소 타임아웃 조치에서 디스코드 차단까지 진행한다.
+            </p>
+<div class="rounded-xl border border-red-500/30 bg-red-500/10 p-4 space-y-1.5 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<ol class="list-decimal pl-5 space-y-1">
+<li>욕설, 패드립, 분쟁성 발언, 성적 발언, 정치적 발언 등의 불건전 메세지 사용</li>
+<li>타 서버 및 타 게임 언급</li>
+<li>용도에 맞지 않는 채널 사용</li>
+<li>팩션 고위직의 무분별한 권한 남용</li>
+<li>피크타임 중 디스코드 내 타 게임 방송/플레이</li>
+<li>도박/음란물 등 불건전 매체 시청</li>
+<li>사유없는 무분별한 유저태그 등</li>
+</ol>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>디스코드 관련 건의사항은 각 채널용도에 맞게 사용해야 한다.</li>
+<li>새벽 00시 ~ 06시 까지는 디스코드 서버 내 타게임 방송 플레이가 허용된다.</li>
+<li>리붓 및 서버 점검때는 타게임 방송 플레이 허용된다.</li>
+</ul>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 채팅 기본안내 -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>채팅 기본안내</span>
+</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>인게임 내에서 욕설 / 패드립 / 분쟁성 발언 등을 사용한 유저는 BAD-RP로 관리자 처벌 진행한다.</li>
+<li>지속적인 도배성 메시지 사용은 허용되지 않으며 적발 시 1차 구두경고 후 지속 시 관리자 처벌 될 수 있다.</li>
+<li>
+                인게임에서 게임을 종료할 때 F8을 눌러서 비정상적인 방법으로 종료 시 관리자 처벌 될 수 있다.<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">ㄴ F8을 눌러서 QUIT 명령어를 쳐서 나가는 행위는 제외</span>
+</li>
+</ul>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- NON - RP / BAD - RP 안내 -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>NON - RP / BAD - RP 안내</span>
+</h2>
+<div class="space-y-3">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">
+                • NON-RP는 관리자처벌이 진행되며 법률에 기재되있지 않는 부분이라도 관리자 판단하에 NON-RP라고 진행되면 관리자 처벌이 진행 된다.
+              </p>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 space-y-1.5 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<ul class="list-disc pl-5 space-y-1">
+<li>차량F꾹 탈취 / 업기/들쳐매기 후 운전, 또는 탑승 / 버그차를 이용한 RP 진행 / 운행중인 이동수단의 수리 등등</li>
+<li>이외에 현실에서 불가능한 행위등은 다 NON-RP처리 된다.</li>
+</ul>
+</div>
+</div>
+<div class="space-y-3 pt-2">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">
+                • BAD - RP는 관리자 처벌이 진행되며 법률에 기재 안되있는 부분이라도 관리자 판단하에 BAD-RP라고 판단하면 관리자 처벌이 진행된다.
+              </p>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 space-y-1.5 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<ul class="list-disc pl-5 space-y-1">
+<li>지속적인 괴롭힘 / 볼링 / 범퍼 등</li>
+<li>이외에 현실에서 해도 되지만 해서는 안되는 행위들은 다 BAD-RP 처리가 될 수 있다.</li>
+</ul>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 기억 RP 및 2중 RP -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>기억 RP 및 2중 RP</span>
+</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>기억RP란 뉴라이프 이후 뉴라이프 이전의 일을 RP적으로 기억하는 행위를 말하며, 관리자 처벌이 가능하다.</li>
+<li>서버 리붓 이후 리붓 이전에 있었던 일을 기억할 수 없으며, 기억할 경우 기억 알피에 속한다.</li>
+<li>2중 RP는 동시에 2개이상의 RP를 진행하는 행위를 말하며 이 경우 관리자 처벌 된다.</li>
+</ul>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+              단 2중 RP에서 조직의 통합RP 및 조직 RP 일부는 제외 됩니다.
+            </div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 매매 및 거래 법률 -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>매매 및 거래 법률</span>
+</h2>
+<div class="space-y-3">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">• 모든 팩션의 사업권으로 판매되는 물품은 개인 간의 거래가 금지된다.</p>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<div>• 단 , 팩션 고위직에게 허락을 맡은 경우 최대 10개까지만 가능 (ㄴ 같은 팩션끼리만 가능함.)</div>
+<div>• 개인 거래의 제한은 주는 사람 기준이며, 이를 초과할 경우 회수, 또는 관리자 처벌</div>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">• 모든 서버 내 상품 아이템의 경우 하한가 상한가를 지켜서 거래하여야 한다.</p>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<div>• 상 하한가를 지키지 않고 거래 후 적발시 아이템 회수처리 및 재산 몰수처리 진행</div>
+<div>• 상 하한가를 지키면서 + @ 금액 지불 행위 금지</div>
+<div>• 차량을 하한가에 빌려주는 행위 금지 ( 이유 OOC 현금 거래와 관련될 수 있음 )</div>
+</div>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>10억 이상 거래 시 디스코드 서버 내 거래작성지를 작성 해야하며 미작성 시 회수되거나 관리자 처벌 될 수 있다.</li>
+<li>하루 용돈으로 줄 수 있는 금액은 최대 10억이다.</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+              1. A가 B에게 10억을 줬을경우 A는 C에게 또 줄 수 없다.
+            </div>
+<div class="space-y-3">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">• 서버 내 모든 후원상품에 대해서 OOC 현금거래는 절대 불가능하다.</p>
+<div class="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<div>• OOC 현금거래 적발 시 양측 다 서버 이용 제한 및 데이터삭제처리</div>
+<div class="pl-3">• 현금거래 시도또한 영구 서버 이용 제한 처리 및 데이터 삭제처리 됩니다.</div>
+</div>
+</div>
+</section>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 시스템 악용 및 불법프로그램 사용관련 -->
+<section class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+<span>시스템 악용 및 불법프로그램 사용관련</span>
+</h2>
+<div class="space-y-3">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">• 서버 내 시스템을 악용해 이익을 편취할 경우 서버 이용이 제한될 수 있다.</p>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<div>• 고의적이며 지속적으로 서버 내 취약 시스템을 악용해 이익 편취한 유저는 서버 이용제한 대상</div>
+<div>• 서버 내 시스템을 악용해 이익을 편취하더라도 자진 신고 후 획득한 이익을 반납 할 경우 제외</div>
+<div>• 서버 내 취약한 문제부분을 발견 시 유저는 서버 관리팀에게 고지 해야 할 의무가 있다.</div>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">• 인게임 내 불법프로그램 사용은 영구 서버 이용제한 대상처리 된다.</p>
+<div class="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<div>• 불법프로그램 및 비인가프로그램 사용으로 인한 정지는 데이터베이스 삭제처리 및 가지고 있던 후원 상품이 있을 경우 서버에 재판매될 수 있다.</div>
+<div>• 불법 프로그램 및 비인가프로그램 사용은 서버 영구제한 조치 대상</div>
+<div>
+                  • 비인가프로그램 : 핵 / AI파일 / 노워터 그래픽 패치 / 창문 없애는 패치 등 RP에 고의적으로 이점을 가져가기 위한 패치 또한 비인가프로그램으로 칭한다.<br/>
+<span class="pl-2 block text-[11px] text-slate-400">ㄴ 다만 , 단순 RP 그래픽 및 조직 RP그래픽 현실그래픽 / 리쉐이드는 허용한다.</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- 📋 팩션 통합법률 (팩션직 통합법률) -->
+<div class="doc-page hidden space-y-8" id="doc-law-policy">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            📋 팩션직 통합법률
+          </h1>
+<section class="space-y-6">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+<span>팩션직 통합법률 안내 </span>
+</h2>
+<!-- 각 특수직(팩션직)법률 기본 규정 -->
+<div class="space-y-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">각 특수직(팩션직)법률 기본 규정</h3>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>모든 팩션들은 팩션과 관계없는 내용으로 사이드 공지를 사용할 수 없다</li>
+<li>모든 팩션의 사이드공지는 동일 내용으로는 최대 2회까지만 연속으로 사용가능하다</li>
+<li>모든 팩션은 퇴근 중 퇴근 권한을 유지해야하며, 임의로 시민직 권한 등을 넣을 수 없다.</li>
+<li>특수직 쿨타임은 탈퇴일 다음날부터 3일간 적용되며, 공무원 팩션은 쿨타임 예외로 처리된다.</li>
+<li>유저가 팩션에서 탈퇴/해체될 경우, 모든 팩션 관련 물품을 반납해야 하며, 미반납 시 관리자 처벌 대상이 된다.</li>
+</ul>
+<!-- Warning Hint Box 1 -->
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<div class="flex items-center gap-2 text-amber-500 font-bold mb-1">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<span>주의사항</span>
+</div>
+<ul class="list-disc pl-5 space-y-1">
+<li>팩션 해체시 특수 쿨타임은 존재하지 않음</li>
+<li>다른 팩션에서 공무원으로 넘어가는 경우 쿨타임 제외</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>팩션 강제 해체 시 공동 계좌의 금액은 모두 회수되며 이전에 공동계좌에 있는 금액을 이전에 고의적으로 회수 시 강제 몰수처리 된다.</li>
+<li>모든 팩션에 대한 무전방은 사설방이 아닌 엑시트 디스코드 본 서버 무전방을 사용해야 한다.</li>
+<li>조직 팩션은 뉴비에게 근접무기만 판매가 가능하며 뉴비 유저에게 근접무기 외 무기 판매는 금지된다.</li>
+<li>조직 팩션은 조직 RP에서 타 팩션과의 협력 RP를 진행할 수 없다</li>
+<li>모든 조직 팩션은 자율적으로 청부살인(김장 RP)RP를 진행할 수 있으며, 그 금액은 팩션 측에서 정한다.</li>
+<li>사냥터안에서 속도물약 / 점프물약 등의 사용은 금지된다.</li>
+<li>팩션에 대한 블랙 리스트는 최대 30일로 지정한다</li>
+</ul>
+<!-- Warning Hint Box 2 -->
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold mb-1">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<span>블랙리스트 개입 지침</span>
+</div>
+<ul class="list-disc pl-5">
+<li>블랙리스트 유저가 지속적으로 팩션에게 피해를 줄 경우 관리자가 따로 개입이 가능하며 이 경우 블랙리스트는 해제 되며 관리자 사건처리로 진행</li>
+</ul>
+</div>
+<!-- Info Hint Box 1 -->
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<div class="flex items-center gap-2 text-blue-500 font-bold mb-1">
+<i class="fa-solid fa-circle-info"></i>
+<span>블랙리스트 등재 기준</span>
+</div>
+<ul class="list-disc pl-5 space-y-1">
+<li>블랙리스트로 등재 가능한 사유는 정당하고 명확해야 한다</li>
+<li>한도를 초과한 팩션 물품 거래 / 팩션사유지 무단 침입 비콘사용 / 영업 방해 및 팩션비하발언 등 사유만 가능하다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>각 팩션에 대한 RP 중단등은 반드시 외부공지에 알려야 하며 공무원 팩션의 경우 최대 30분 X2번까지 가능하며 공무원팩션은 외부공지 + 사이드공지로 알려줘야 한다.</li>
+</ul>
+<!-- Info Hint Box 2 -->
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h4 class="font-bold text-blue-500 flex items-center gap-2 text-sm md:text-base">
+<i class="fa-solid fa-circle-info"></i>
+<span>블랙리스트 등재 사유 관련 안내 ( 해당 사유로만 블랙리스트 등재가 가능합니다 )</span>
+</h4>
+<ol class="list-decimal pl-5 space-y-1">
+<li>팩션 비하</li>
+<li>팩션원 폭행 및 살인</li>
+<li>팩션 사업권 물품 판매 방해</li>
+<li>팩션 사유지 무단침입 / 팩션 사유지 내 무단 비콘 사용</li>
+<li>팩션 물품 무단 거래</li>
+<li>팩션 사업권 물품에 대한 호출 허위 콜</li>
+<li>블랙리스트 등재자가 똑같은 사유 및 다른 사유로 계속 지속적인 행위를 하는 경우</li>
+</ol>
+</div>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 공무원 통합규정 -->
+<div class="space-y-4">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">공무원 통합규정</h3>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>해당 공무원 법률은 모든 공무원 팩션에 진행된다.</li>
+<li>공무원은 RP 상황 발생이 아닌 일반 상황의 경우 도로교통법을 어길 수 없다.</li>
+<li>공무원 팩션 유저들은 팩션권한을 남용할 수 없으며 적발시 관리자 처벌이 가능하다</li>
+<li>
+                  퇴근한 공무원은 시민으로 간주하며 이 경우 공무원 전용 모든 아이템을 사용할 수 없다.<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">ㄴ 적발 시 관리자 처벌될 수 있다.</span>
+</li>
+<li>공무 팩션은 출근 중 개인의 스킨과 개인의 차량을 사용할 수 없다.</li>
+<li>출근 중인 공무원은 호출을 무조건 받고 출동해야하며, 특별한 사유가 있는 경우 해당 호출에 대해 거부 사유가 명확히 존재해야 한다.</li>
+<li>공무원 팩션은 모든 행동에 대해 행동명령어를 사용해야 하며 행동명령어를 미사용 시 NON-RP 처리 된다.</li>
+<li>공무원 팩션의 최대 RP 구금 가능시간은 120분이다.</li>
+<li>공무 팩션의 PM은 약 3초간격으로 진행 / 단속 PM이 1회 이상 찍힌 경우 집행이 가능</li>
+</ul>
+<!-- Info Hint Box for PM -->
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-blue-500 font-bold mb-1">
+<i class="fa-solid fa-circle-info"></i>
+<span>PM 집행 기준</span>
+</div>
+<ul class="list-disc pl-5 space-y-1">
+<li>3초 이내에 여러번을 찍은 경우 1회만 인정된다.</li>
+<li>공무원 PM 기준은 공무원의 영상 기준으로 확인 한다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>공무원 팩션은 범죄자가 잠수존/보호구역에 진입하는 경우 운영팀을 호출하여 보호구역 밖으로 이동한 후 강제 집행할 수 있다.</li>
+<li>공무원 팩션은 퇴근 후 자기 관할 RP지역에서 스토리 RP는 불가능 하며 단, 즉흥, 도주, 수배 등의 필드 RP는 진행이 가능하다.</li>
+<li>공무원 팩션은 사건 집행 시 신분증 검사와 소지품 검사를 필수로 진행해야 한다.</li>
+<li>공무원은 반드시 구금 보내기전 끌고가기 상태를 해제한 후 보내야 한다.</li>
+<li>수갑 채우기전에 미란다 고지를 해야 한다.</li>
+<li>모든 구금 처리는 유치장에서 진행하여야 하며 강도RP 패배 후 집행은 현장 집행이 가능하다.</li>
+<li>
+                  공무원 팩션은 소지품 검사에서 착용중인 무기와 소유중인 불법적인 물건을 압수할 수 있다.<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">ㄴ 불법적인 물건: 검은 돈, 마약, C4</span>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">ㄴ 단, 통합 RP에 해당되는 RP의 경우 해당 RP 법률 패배 벌금에 포함되어있는 품목에 대해서만 압수가 가능하다</span>
+</li>
+<li>
+                  공무원은 RP 중 공무원 복장 외에는 불가능하다.<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">ㄴ 서버에 허락을 맡은 공무원 개인스킨 같은경우는 허락한다.</span>
+</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 차량 압류 ( 렉카 ) -->
+<div class="space-y-4">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white">차량 압류 ( 렉카 )</h3>
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">• 렉카 팩션의 압류조건상황은 아래 2가지로 나뉜다.</p>
+<!-- Success Hint Box -->
+<div class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h4 class="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 text-sm md:text-base">
+<i class="fa-solid fa-circle-check"></i>
+<span>즉시 압류 가능 조건</span>
+</h4>
+<ul class="list-disc pl-5 space-y-1.5">
+<li>
+                    집행차량<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block">ㄴ 강도의 스토리 RP 패배 후 집행 뒤 풀보석금을 내어도 렉카 차량압류는 반드시 진행되야 한다.</span>
+</li>
+<li>
+                    메인 광장 기준 4면 도로/인도에 주차된 차량<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block">ㄴ 단 , 메인광장 ATM RP를 위해 주차해둔 차량은 제외</span>
+</li>
+<li>오프라인 유저의 차량</li>
+<li>바다 속에 침수 된 차량 / 폭발 등으로 인해 전소되어 수리 불가능한 차량 / 팩션 사유지 내에 방치된 차량 → 해당 팩션원이 신고한 경우 즉시 압류 가능</li>
+</ul>
+</div>
+<!-- Danger Hint Box -->
+<div class="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+<h4 class="font-bold text-red-500 flex items-center gap-2 text-sm md:text-base">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<span>고지 후 압류가 가능한 경우</span>
+</h4>
+<p class="font-bold text-red-600 dark:text-red-400 pl-2">
+                  • 위 항목에 해당하지 않는 필드 내 방치 차량은, 2분간 사이드 공지를 통한 고지 후 압류할 수 있다.
+                </p>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>모든 차량 압류 시, 사이드 공지를 통해 차량 고유번호 및 압류 사유를 명확히 공지해야 한다</li>
+<li>공무원 차량은 압류가 불가능하며, 무료로 삭제 처리한다.</li>
+<li>트럭 기사 비콘을 통해 소환된 트럭은 압류할 수 없다</li>
+<li>RP 진행 중인 시민 차량은 다음 조건을 만족하면 압류 대상에서 제외된다</li>
+</ul>
+<!-- Warning Hint Box for Vehicles -->
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<div class="flex items-center gap-2 text-amber-500 font-bold mb-1">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<span>주차 관련 제외 조건</span>
+</div>
+<ul class="list-disc pl-5">
+<li>
+                    RP 범위 옆 또는 맞은편 도로에 주차된 경우<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block">ㄴ 진행 중인 RP가 없거나 RP에 참여하지 않은 시민의 차량은 압류 대상이 된다.</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- 📋 뉴비 보호법 -->
+<div class="doc-page hidden space-y-8" id="doc-law-newbie">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            📋 뉴비 보호법
+          </h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">
+                뉴비 보호 규정안내
+              </h2>
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">• 아래 사항대로 안내되며 아래 사항을 꼭 읽어주세요.</p>
+<!-- Info Hint Box -->
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h3 class="font-bold text-blue-500 flex items-center gap-2 text-sm md:text-base">
+<i class="fa-solid fa-circle-info"></i>
+<span>뉴비 보호법 안내</span>
+</h3>
+<ul class="list-disc pl-5 space-y-1">
+<li>뉴비는 신규고번 -50까지 뉴비로처리</li>
+<li>뉴비는 엑시트 서버로부터 보호받을 권리를 가지며, 이 권리는 아래와 같이 보장됩니다.</li>
+</ul>
+</div>
+<!-- Warning Hint Box -->
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<ul class="list-disc pl-5 space-y-2">
+<li>
+                    뉴비를 대상으로 한 살인, 폭행, 청부, 납치, 감금, 사기, 서버 법률 위반 행위 유도 등 악의적인 행위가 적발될 경우<br/>
+<span class="text-red-500 font-semibold pl-2 block">관리자 처벌 진행될 수 있다</span>
+</li>
+<li>뉴비가 먼저 선rp를 걸은 상황인 경우 뉴비보호규정은 제외된다.</li>
+<li>뉴비는 근접 무기 구매만 가능하며, 공무 팩션에 가입된 경우 뉴비 보호법 적용 대상에서 제외</li>
+<li>뉴비가 보호법을 악용하다고 판단될 경우, 관리자 재량에 따라 최대 200분 구금처리</li>
+<li>뉴비보호법 적용사항은 유저선택사항이며 공무처리사건시 1회 훈방 무조건 부여 총기 자유구매 가능 but 총기를 사용하는 경우 뉴비보호법 바로 해제 및 훈방권 삭제</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- 📋 보호구역 법률 -->
+<div class="doc-page hidden space-y-8" id="doc-law-safezone">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            📋 보호구역 법률
+          </h1>
+<section class="space-y-6">
+<!-- 구분 -->
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">
+                보호구역 및 준보호구역 구분
+              </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h3 class="font-bold text-blue-500 flex items-center gap-2 text-sm md:text-base">
+<i class="fa-solid fa-shield-halved"></i>
+<span>보호구역</span>
+</h3>
+<p class="leading-relaxed font-medium">메인 광장 / 메인 차고 / 낚시터</p>
+</div>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h3 class="font-bold text-amber-500 flex items-center gap-2 text-sm md:text-base">
+<i class="fa-solid fa-building-shield"></i>
+<span>준보호구역</span>
+</h3>
+<p class="leading-relaxed font-medium">남부 경찰서 / 중 북부 보안국 사유지 / 메인차고 및 메인광장 사이 도로</p>
+</div>
+</div>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<!-- 제한 사항 -->
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">
+                보호구역 내 제한 사항
+              </h2>
+<ul class="list-disc pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>
+                  보호구역 내에서는 모든 RP를 금지한다.<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">(예: 폭행, 납치, 위협, 협박, 추격 등 RP 일체 금지)</span>
+</li>
+<li>
+                  보호구역 내 시민을 보호구역 밖으로 옮기는 행위를 금지한다.<br/>
+<span class="text-slate-500 dark:text-slate-400 pl-2 block mt-0.5">(예: 업기, 들쳐매기, 캐릭터 밀기 등)</span>
+</li>
+<li>RP 도중 보호구역으로 진입하는 행위는 금지된다.</li>
+<li>
+                  보호구역 및 준 보호구역 내에서의 총기 발포 및 살인 행위는 금지된다.<br/>
+<span class="text-amber-500 font-medium pl-2 block mt-0.5">※ 단, 준보호구역 내 공무 집행 중에는 예외로 총기 사용 가능</span>
+</li>
+<li>메인 광장 차량 진입 시도 시, 1회 구두 경고 후 법률 위반에 따라 처벌된다.</li>
+<li>보호구역 및 준보호구역에서 과도한 RP 유도 행위가 적발될 경우, 1차 경고 후에도 지속 시 관리자 처벌된다.</li>
+<li>보호구역 기준 한 블록 내 헬기 저공비행은 금지되며, 1차 구두 경고, 2차 적발 시 관리자 처벌된다.</li>
+<li>저공비행으로 인해 타 유저에게 피해(추락, 사고 등)가 발생한 경우, 즉시 관리자 처벌된다.</li>
+<li>헬기 운행 시, 착륙을 제외한 모든 비행 중에는 주변 건물(메이즈뱅크은행기준)보다 높은 고도를 유지해야 한다.</li>
+</ul>
+</div>
+</section>
+</div>
+<!-- 📋 스토리 RP 법률 개요 -->
+<div class="doc-page hidden space-y-6" id="doc-law-story-overview">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">📋 스토리 RP 법률</h1>
+<p class="text-sm text-slate-600 dark:text-slate-400">아래의 하위 문서를 선택하여 세부 스토리 RP 법률을 확인하세요.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-0', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 빈집 RP ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 빈집 RP ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-1', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ ATM RP ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ ATM RP ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-2', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 편의점 RP ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 편의점 RP ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-3', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 보석상 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 보석상 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-4', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 남부은행 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 남부은행 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-5', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 북부은행 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 북부은행 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-6', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 닭공장 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 닭공장 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-7', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 도주 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 도주 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-8', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 즉흥 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 즉흥 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-9', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 수배 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 수배 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-story-10', 'Exit LAW &gt; 📋 스토리 RP 법률', '[ 영장 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 영장 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+</div>
+</div>
+</div>
+<!-- 📋 스토리 RP 법률 - 빈집 RP 페이지 -->
+
+<div class="doc-page hidden space-y-8" id="doc-law-story-0">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">빈집털이 RP</h1>
+<section class="space-y-6">
+<div class="space-y-4"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 출근 공무원은 강도측과 동등한 인원으로 참여하며, 강도측은 인원 제한 없이 참여가능</li><li>사용 가능 무기 : 근접 무기만 사용 가능</li><li>진행방식 : 전멸전 / 라운드 : 단판전</li><li><strong>RP 쿨타임 :</strong> 5분</li>
+</ul>
+</div><hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>경찰 및 보안국 허가 시 RP 가능</li><li>공무원 인원은 강도측보다 적은 상태로 시작 불가</li><li>Q엄폐 금지 / 중도 참여 불가</li><li>무력진압 후 사망할 경우, 소생 후 재 참여 불가(소생된 경우, 사망자리에서 RP 종료까지 레그돌)</li><li>범위 구역 이탈 시 해당 팀은 즉시 RP에서 패배 처리</li><li>RP 시작 후 참여 인원 중 1명이라도 영역을 이탈할 경우 자동으로 RP패배 처리</li><li>강도측은 시민, 퇴근 공무원, 조직 등 모두 참여 가능 / 타 팩션&amp;시민과 합동 RP 가능</li><li>지붕 및 올라가는 곳 사용 금지(담을 넘어가는 행위는 가능)</li><li>RP 구역 내 차량 배치 금지</li><li>알피 시작(무력진압) 이후 앉기(ctrl) 행위 금지</li><li>남부 빈집털이 RP시 수영장 입수 금지</li>
+</ul>
+</div><hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도측이 RP 채팅에 RP 위치, 강도 인원이 표기된 허가 요청 공표를 3번 올린다.<br/>ㄴ EX) 시민3 남부/북부빈집 ㅎㄱㅇㅊ</li><li>공무원은 강도의 공표를 본 후 RP 채팅으로 허가 OR 불허가인지 말해줘야 한다.<br/>ㄴ 불허가 시 정당한 사유를 가지고 유저에게 알려줘야 한다.</li><li>공무원의 허가 시 강도는 RP시작 비콘에서 E키를 눌러 벨을 울리며 대기한다</li><li>공무원은 각 사유지에서 RP상황발생에 대한 사이드공지를 발표 후 RP 시작대기지점으로 간다.</li><li>RP 구역 도착 후 공무원은 RP구역 밖에서 RP 채팅으로 무력진압 내용을 3번 발표 후 진입하며 RP를 진행한다.</li>
+</ul>
+</div><hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>강도 승리시 : 검은돈 2억</li><li>강도 패배시 : 인당 벌금 3천 구금 10분</li></ul>
+</div><hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. RP 위치</h2>
+<img alt="북부 빈집 RP 위치" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/rWhK0qGtpb6m1wjQj7N0"/ loading="lazy">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">• 북부 빈집 노란구역 : 공무원 대기 구역 / 강도측 대기 및 rp구역은 빨간구역</p>
+<figure><img alt="남부 빈집 RP 위치" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/QwBO7w7iSJKEAt5SFEzu"/ loading="lazy"><figcaption></figcaption></figure>
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">• 남부 빈집 RP 기준이며 테니스장 및 테니스장으로 이어지는 통로 사용 금지 패알처리</p>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-1">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ ATM RP ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 강도/공무측 각각 최대 2인 / 공무측은 강도측보다 인원이 적을 수 없음</li>
+<li>사용 가능 무기 : 샷건, 스나이퍼, 스턴건 등을 제외한 모든 무기 사용 가능</li>
+<li>진행방식 : 전멸전</li>
+<li>RP 쿨타임 : 5분</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>Q엄폐 사용 금지 / 중도 참여 불가</li>
+<li>공표 후 공무원 허가 시 가능</li>
+<li>강도측 아웃플레이 불가능</li>
+<li>엇각/우각 발생 시 중단 후 영상을 확인하여 중단 시점부터 재RP 가능</li>
+<li>중단 3회 이상 발생 시 없알 처리</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도측은 RP 채팅으로 RP 위치와 강도측 인원을 공표하여 RP 가능 여부 3번을 외치며 확인한다.</li>
+<li>공무원은 강도의 공표를 본 후 RP 채팅으로 허가 OR 불허가인지 말해준다.</li>
+<li>공무원의 허가 시 강도는 RP시작 비콘에서 E키를 눌러 벨을 울리며 대기한다</li>
+<li>공무원은 각 사유지에서 RP상황발생에 대한 사이드공지를 2번 발표 후 RP지역으로 간다.</li>
+<li>공무측은 RP 지역에 도착할 시 RP 채팅에 RP 위치, 공무 인원이 포함된 무력진압 공표를 3번 올리고 진행한다.</li>
+<li>강도 패배 시 해당 RP에서 획득한 검은돈 및 소유중인 무기만 압수한다.</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 승리 시 : 검은돈 3억</li>
+<li>강도 패배 시 : 인당 벌금 5천 &amp; 구금 10분</li>
+</ul>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-2">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 편의점 RP ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li><strong>RP 가능 인원 : 강도/공무측 각각 최대 3인</strong><br/><strong>ㄴ 강도측이 공무측보다 많을 수 없다.</strong></li>
+<li><strong>사용 가능 무기 : 샷건, 스나이퍼, 스턴건 등을 제외한 모든 무기 사용 가능</strong></li>
+<li><strong>진행방식 : 전멸전</strong></li>
+<li><strong>RP 쿨타임 :</strong> 10분</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li><strong>계산대있는곳만 Q엄폐 가능 /</strong> 중도참여 x</li>
+<li>공표 후 공무원 허가 시 가능</li>
+<li><strong>강도측의 아웃 플레이 불가능</strong></li>
+<li>엇각/우각 발생 시 중단 후 영상을 확인하여 중단 시점부터 재RP 가능</li>
+<li>중단 3회 이상 발생 시 없알 처리</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도측은 RP 채팅으로 RP 위치와 강도측 인원을 공표하여 RP 가능 여부를 확인한다</li>
+<li>공무원은 강도의 공표를 본 후 RP 채팅으로 허가 OR 불허가인지 말해주고 불허가 시 명확한 사유 언급해야한다.</li>
+<li>공무원의 허가 시 강도는 RP시작 비콘에서 E키를 눌러 벨을 울리며 대기한다</li>
+<li>공무원은 각 사유지에서 RP상황발생에 대한 사이드공지를 2번 발표 후 RP 시작대기지점으로 간다.</li>
+<li>RP 구역 도착 후 공무원은 RP구역 밖에서 RP 채팅으로 무력진압 내용을 3번 발표 후 진입하며 RP를 진행한다 .</li>
+<li>강도 측 패배 시 공무원은 그 RP에서 얻은 검은돈만 회수 및 소유중인 무기 압수 진행한다.</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 측 승리 시 : 검은돈 5억</li>
+<li>강도 측 패배 시 : 벌금 인당 7천 &amp; 구금 10분</li>
+</ul>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-3">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 보석상 ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>RP 가능한 인원 : 경찰은 강도측 인원 기준 최대 +3명까지 참여 가능, 강도는 경찰 수를 넘을 수 없다.</li><li>사용 가능 무기 : 스턴건을 제외한 모든 무기 사용 가능</li><li>RP 쿨타임 : 20분</li></ul><div class="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200"><strong class="text-red-500">⚠️</strong> 샷건 또는 스나이퍼 합 최대 2명 / 모든 무기 사용 가능</div><ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>진행방식 : 전멸전</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>보석상 RP는 아웃플레이가 금지된다.</li><li>엇각 , 우각 자리는 금지한다.</li><li>이름표가 켜진상태로 RP진행 시 NON -RP로 간주</li><li>보석상 진열대를 제외한 장소에서 Q 엄폐 불가능 / Q엄폐 후 사격금지</li><li>몸이 보이나 총이 맞지 않는 곳은 금지자리로 간주 되며 해당 RP는 패알처리</li><li>몸이 보이나 총이 맞지 않는 곳에서 밖을 쏘는 행위는 금지</li><li>만약 밖을 쏘지 않고 안에서 그냥 들어오는걸 기다리는 행위는 상관 X</li><li>엇각/우각 발생 시 중단 후 영상을 확인하여 중단 시점부터 재RP 가능</li><li>강도측 기준 들어오는 문입구 바로 양 사이드쪽 대기 금지</li><li>금지자리 ( 2번째 / 3번째 올린 사진 )에서 밖을 쏘는 행위만 금지되며 저 자리에서 대기 후 아예 앞까지 들어오는걸 잡는 행위는 가능하다.</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>강도측이 RP 채팅에 RP 위치, 강도 인원이 표기된 허가 요청 공표를 3번 올린다<br/>EX) "보석상 시민 3 허가요청"</li><li>공무 측이 허가할 시 털이 비콘을 눌러 벨을 누른다</li><li>불허가 시 반드시 사유를 명확하게 말해줘야 한다</li><li>벨이 울리면 공무 측은 사이드 공지를 한다.</li><li>공무측은 RP 지역에 도착할 시 RP 채팅에 RP 위치, 공무 인원이 포함된 무력진압 공표를 3번 올린다.<br/>EX) 경5 보석상 ㅁㄹㅈㅇ</li><li>강도 측 패배 시 공무원은 그 RP에서 얻은 검은돈만 회수 및 소유중인 무기 압수 진행한다.</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>강도 측 승리 시 : 검은돈 8억</li><li>강도 측 패배 시 : 벌금 인당 1억 및 구금 20분 / 필수 : 최소 구금 10분</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">금지 자리 안내</h2>
+<div class="space-y-4"><img alt="보석상 금지 자리 안내" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/E4oBXPaHEoLsGm5h6iOU"/ loading="lazy"><img alt="보석상 금지 자리 안내" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/MM8iYWJ77pcAEdAMQYoc"/ loading="lazy"><img alt="보석상 금지 자리 안내" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/cs27BolVUZ4OgUiUmdpN"/ loading="lazy"></div>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-4">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 남부은행 ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>RP 가능 인원 : 강도/공무 각각 최소 5명</li></ul><div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200"><strong class="text-amber-500">⚠️</strong> 공무측은 ( 강도인원+3 )만큼 최대 인원의 제한을 가지며 강도는 공무원인원보다 많을 수 없다.</div><ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>사용 가능 무기 : 스턴건을 제외한 모든 무기 사용 가능</li></ul><div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200"><strong class="text-amber-500">⚠️</strong> 특수 총기는 각 팀 인원 2명당 1개 사용이 가능하다. ( 스나이퍼 or 샷건 둘중 하나 사용 )</div><ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>진행방식 : 전멸전</li><li>RP 쿨타임 : 30분</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>강도 측의 아웃플레이가 금지된다.</li><li>남부은행 안 샹들리에에 올라가있는 행위 금지</li><li>텔포 . 엇각 . 경직 제외한 기타 모든사유는 중단사유로 불가능하다</li><li>무력진압 후 사망 할 경우 소생 후 RP 재참여는 불가능하다</li><li>남부은행은 Q엄폐 금지된다</li><li>남부은행에서 벨을 누른사람은 자리 이탈이 금지된다. 계단까지는 가능하나 그 이상 나갈 시 취소처리 되면 패알처리 된다.</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>강도측이 RP 채팅에 RP 위치, 강도 인원이 표기된 허가 요청 공표를 3번 올린다.<br/>EX) ex) "남부은행 시민 5 허가요청"</li><li>공무 측이 허가할 시 털이 비콘을 눌러 벨을 누른다.</li><li>만약 불허가 시 명확한 사유를 전달해야 한다.</li><li>벨이 울리면 공무 측은 사이드 공지를 통해 RP 사실을 안내한다</li><li>공무측은 RP 지역에 도착할 시 RP 채팅에 RP 위치, 공무 인원이 포함된 무력진압 공표를 3번 올린다.<br/>EX ) ex) "남부은행 경찰8 무력진압 시작"</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>강도 승리 시 : 검은돈 10억</li><li>강도 패배 시 : 벌금 인당 1억5천 / 구금 30분 / 필수 최소 구금 10분</li></ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">금지 자리 안내</h2>
+<div class="space-y-4"><p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">샹들리에 위 올라가있는 행위 금지</p><img alt="남부은행 금지 자리 안내" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/hTEqTpe44aqmanHI4tX3"/ loading="lazy"><p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">해당 아래 사진 처럼 철창에 올라가서 쏘는 행위 X</p><img alt="남부은행 금지 자리 안내" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/rb44j9jVPdjaW2EXUypQ"/ loading="lazy"></div>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-5">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 북부은행 ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 강도/공무 각각 최소 5명</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200"><strong class="text-amber-500">⚠️</strong> 공무측은 ( 강도인원+3 )만큼 최대 인원의 제한을 가지며 강도는 공무원인원보다 많을 수 없다.</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>사용 가능 무기 : 스턴건을 제외한 모든 무기 사용 가능</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200"><strong class="text-amber-500">⚠️</strong> 특수 총기는 각 팀 인원 2명당 1개 사용이 가능하다. ( 스나이퍼 or 샷건 둘중 하나 사용 )</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>진행방식 : 전멸전</li>
+<li>RP 쿨타임 : 30분</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 측의 아웃플레이가 금지된다.</li>
+<li>텔포 . 엇각 . 경직 제외한 기타 모든사유는 중단사유로 불가능하다.</li>
+<li>무력진압 후 사망 할 경우 소생 후 RP 재참여는 불가능하다.</li>
+<li>Q엄폐 금지된다</li>
+<li>몸이 보이나 총이 맞지 않는 곳은 금지자리로 간주 되며 해당 RP는 패알처리</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도측이 RP 채팅에 RP 위치, 강도 인원이 표기된 허가 요청 공표를 3번 올린다.<br/>ㄴ EX) 시민 5 북은 ㅎㄱㅇㅊ</li>
+<li>공무원은 강도의 공표를 본 후 RP 채팅으로 허가 OR 불허가인지 말해준다</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200"><strong class="text-amber-500">⚠️</strong> 불허가 시 보안국은 RP채팅으로 명확한 사유를 전달해야한다.</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>공무원의 허가 시 강도는 RP시작 비콘에서 E키를 눌러 벨을 울리며 대기한다</li>
+<li>공무원은 각 사유지에서 RP상황발생에 대한 사이드공지를 발표 후 RP 시작대기지점으로 간다.</li>
+<li>RP 구역 도착 후 공무원은 RP구역 밖에서 RP 채팅으로 무력진압 내용을 3번 발표 후 진입하며 RP를 진행한다.</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금안내</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 측 승리 시 : 검은돈 10억</li>
+<li>강도 측 패배 시 : 인당 벌금 1억5천 및 구금 30분 / 필수 최소 구금 10분</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<img alt="북부은행 금지 자리 안내" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/utFukqt036cLWr6B6EP0"/ loading="lazy">
+<p class="text-xs md:text-sm text-slate-700 dark:text-slate-300">해당 자리 에서 밖을 쏘는 행위 금지</p>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-6">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 닭공장 ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 강도 / 공무원 최소 각각 4명 이상</li>
+<li>공무측은 ( 강도인원+3 )만큼 최대 인원의 제한을 가진다.</li>
+<li>사용 가능 무기 : 스턴건을 제외한 모든 무기 사용 가능</li>
+<li>특수 총기는 각 팀 인원 2명당 1개 사용이 가능하다. ( 스나이퍼 or 샷건 둘중 하나 사용 )</li>
+<li>진행방식 : 전멸전</li>
+<li>RP 쿨타임 : 30분</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>닭공장 내부 Q엄폐 사용이 불 가능하다.</li>
+<li>공무측은 열감지를 대표자 1명만 사용할 수 있다.</li>
+<li>후문은 사용 금지</li>
+<li>아래 표기된 금지자리 사용 시 패알처리</li>
+<li>강도 측의 아웃플레이가 금지된다.</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도측이 RP 채팅에 RP 위치, 강도 인원이 표기된 허가 요청 공표를 3번 올린다.<br/>ㄴ EX) 시민 5 닭공장</li>
+<li>공무원은 강도의 공표를 본 후 RP 채팅으로 허가 OR 불허가인지 말해줘야 한다.<br/>- 불허가 시 정당한 사유를 가지고 유저에게 알려줘야 한다.</li>
+<li>공무원의 허가 시 강도는 RP시작 비콘에서 E키를 눌러 벨을 울리며 대기한다</li>
+<li>공무원은 각 사유지에서 RP상황발생에 대한 사이드공지를 발표 후 RP 시작대기지점으로 간다.</li>
+<li>RP 구역 도착 후 공무원은 RP구역 밖에서 RP 채팅으로 무력진압 내용을 3번 발표 후 진입하며 RP를 진행한다.</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 승리시 : 검은돈 10억</li>
+<li>강도 패배시 : 인당 벌금 1억5천 및 구금 30분 / 최소필수 구금 10분 진행</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. 금지 자리 위치</h2>
+<div class="space-y-4">
+<div><img alt="닭공장 금지 자리 위치" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/ULHl2LvHa9cQrquGNObc"/ loading="lazy"><p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 mt-2">위에 올라가서 사격 금지</p></div>
+<div><img alt="닭공장 후문 금지 위치" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/ZJJDkJtHxGYY7LeAljVr"/ loading="lazy"><p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 mt-2">해당 후문 들어가는 입구 들어갈 시 패알처리</p></div>
+</div>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-7">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight"># 도주 RP</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원<br/>▣ 공무원 : RP 당사자 및 동승자<br/>▣ 도주자 : RP 당사자 및 동승자</li>
+<li>사용 가능 무기 : <strong>스턴건, 샷건, 스나이퍼, 투척무기를 제외한 모든 사용 가능</strong></li>
+<li>제한시간 : 상대방이 시야속에서 사라질 경우 ( 위 경우 사유지로 복귀 후 출석 RP &gt; 수배 RP로 변환 가능 )</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>바다 / 강 / 산 / 지하 / 보호구역 및 건물 내부로 이동 금지</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>고의적인 진입 시 패알 처리</li>
+<li>범퍼로 인한 진입시 바로 벗어나야 하며 벗어나기까지 사격은 금지되고 , 벗어난 후 알피 재참여 가능</li>
+<li>건물 안 / 건물 옥상 등 건물 이용 금지<br/>ㄴ 이 경우 즉시 패알처리</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>아래 적힌 상황의 경우 RP 전환이 가능하다.</li>
+</ul>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<h3 class="font-bold text-blue-500 mb-3">다음과 같은 상황 일 경우 RP 전환이 가능하다.</h3>
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li><strong>즉흥 RP :</strong> 도주자 및 공무 팩션이 총기를 발포한 경우</li>
+<li><strong>영장 RP :</strong> 도주자가 본인 소속의 사유지로 진입한 경우</li>
+<li><strong>수배 RP :</strong> 공무 팩션이 도주자를 놓친 경우<br/>ㄴ 공무원 팩션이 도주자를 놓쳐 사유지 복귀 후 출석 RP를 진행하고 도주자가 출석을 거부하여 공무원 팩션이 수배RP를 위해 도주자 위치를 추적할 때 도주자가 팩션 사유지 안에 있는 경우 영장 RP로 바로 전환 가능</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>공무원 팩션은 헬기사용이 1대까지만 허용 된다.</li>
+<li>RP 도중 차량 비콘을 사용 할 수 없고 공무차량의 도난 또한 금지</li>
+<li>RP 도중 양측 바다 진입 시 사망처리 되며 각 양측 인원이 한명일 경우 먼저 바다에 진입 한 사람이 패알처리 된다.</li>
+<li>RP 도중 이동수단 변경은 패알 처리 ( 공무원의 헬기 1회는 허용 )</li>
+<li>공무원의 PM 1회 이상 찍힌 경우 도주 RP가 성립된다.</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>단 즉흥 / 수배 / 영장 RP들로 전환은 PM이 3회 이상 찍혀야 가능하다.</li>
+<li>PM 횟수는 공무원 영상 시점 으로 기준을 한다.</li>
+<li>짧은 시간 내 여러번 PM을 찍는 행위는 1회로만 인정된다.</li>
+</ul>
+</div>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 중 팩션 지원은 지원콜 및 디스코드 무전방 지원 음성이 동반되어야 함<br/>ㄴ 미리 지원을 하는 행위 불가능<br/>ㄴ EX ) 야 나 즉흥 터질거같으니까 미리 와봐</li>
+<li>제한시간 10분 내 도주자를 잡지 못하거나 놓쳤을경우 도주RP는 종료되며 공무원은 사유지 복귀 후 출석요구RP &gt; 수배RP로 변환이 가능하다.</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>공무원 팩션이 PM을 1회 이상 눌러 하차를 요구했지만 이를 응하지 않고 도주할 경우 RP가 성립</li>
+<li>아래 적힌 상황과 같이 RP 전환이 진행</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>PM 3번 이후 계속 불응 후 도주 시 총기 발포가 가능하며 이 경우 즉시 도주RP에서 즉흥 RP로 변환된다.</li>
+<li>도주RP에서 도주자를 시야에서 놓친경우 사유지 복귀 후 출석 RP &gt; 출석 RP 불응 시 &gt; 수배RP 로 변환이 가능하다.</li>
+<li>수배RP 전환을 한 후 공무 팩션이 수배자 위치를 확인 후 수배자가 사유지 안에 있을 경우 영장 RP로 전환된다.</li>
+</ul>
+</div>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 승리 : 범죄 면책</li>
+<li>강도 패배 : <strong>참여 인당 벌금 1억 구금 20분 / 도주자 범죄 행위 가중 처벌</strong></li>
+</ul>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-8">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight"># 즉흥 RP</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>팩션 : 동일 팩션의 출근중인 모든 인원<br/>ㄴ 단 RP 발생이전에 출근한 인원만 지원 가능<br/>ㄴ RP 발생 시 다른 RP를 진행하고 있는 인원은 해당 RP가 종료 된 후 RP에 지원 가능</li>
+<li>시민 : 차량 탑승 동승자 외 불가능</li>
+<li>사용 가능 무기: 스턴건, 샷건, 스나이퍼, 투척무기를 제외한 모든 사용 가능</li>
+<li>진행 방식 : 전멸전</li>
+<li>RP 범위 : 첫 총기 발포 위치 기준 3블럭 이내<br/>ㄴ 고속도로는 아래 사진 참조</li>
+</ul>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의 사항</h2>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<h3 class="font-bold text-blue-500 mb-3">아래 유의사항대로 진행 해야 하며 하나라도 어기게 되어 관리자 사건처리를 진행 할 경우 법률 미숙지로 처벌 진행</h3>
+<ol class="list-decimal pl-5 space-y-2 leading-relaxed">
+<li>바다 / 산 / 강 / 지하 / 보호구역 / 건물 내부 이동은 금지한다.</li>
+<li>RP 발생 이후 10분까지 지원 가능(조직/공무원 해당) / 제한시간 이후 지원 시 패알</li>
+<li>시민+조직 탑승 시 조직은 지원콜 불가(타 조직간 동승 시 지원 불가)</li>
+<li>공무원 측은 헬기 최대 1대 사용 가능</li>
+<li>헬기 운전자 외 동승자 발포 가능하며, 날개로 죽이는 행위, 추락시켜 죽이는 행위 금지(파손으로 인한 추락 제외)</li>
+<li>RP 도중 차량 비콘 사용 금지</li>
+<li>시민도 즉흥RP가 가능하나 지원은 불가</li>
+<li>즉흥 RP 성립 조건은 공무원 팩션측 PM3회 이상 + 양측 총기 선발포 시 성립</li>
+<li>즉흥 중 사유지 내부로 도주할 수 없다.</li>
+<li>1번 사항의 경우 고의적인 진입은 패알처리 / 범퍼로 인한 경우 해당 위치를 벗어나야 하며 이후 알피 재참여가 가능하다.</li>
+<li>즉흥 알피 진행 중, 종료 이후 공무원 차량을 도난할 수 없다.</li>
+<li>RP 진행 도중 바다에 진입 시 사망처리</li>
+<li>알피 중 이동수단을 변경할 시 패알 처리한다.<br/>ㄴ 단 공무 팩션의 차량 -&gt; 헬기로의 변경은 최초 1회에 한해 허용한다.</li>
+<li>알피 중 팩션 지원의 경우 지원콜 및 무전방 내 지원 음성이 동반되어야 한다.</li>
+<li>즉흥 RP 범위는 일반 필드 기준 2블럭 이내만 가능하며 일반 필드 내 즉흥 시작 시 고속도로 진입 불가 / 고속도로에서 시작 할 경우 일반 필드로 진입 불가</li>
+<li>즉흥 RP 범위 중 고속도로 는 아래 이미지 구역 안에서만 가능하다.</li>
+<li>즉흥 RP 시작 된 후 10분후에는 양측 지원 불가능 및 중도참여 X</li>
+<li>범위 내부에서 범위 외부로 사격은 가능하나 범위 외부에서 범위 내부로 사격은 불가능하다.</li>
+</ol>
+</div>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행 방법</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>도주 RP 진행 중 공무원 팩션의 PM3회 이상 + 양 측에서 총기 선발포 시 성립</li>
+</ul>
+<div class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200">
+<ul class="list-disc pl-5 space-y-2 leading-relaxed">
+<li>PM 인정은 공무원 측 시점 기준으로 진행</li>
+<li>짧은 시간 내 연타 시 1회로 간주</li>
+<li>공무원의 PM3번이 찍히지도 않은 상태에서는 양측 모두 총기 발포 불가능</li>
+</ul>
+</div>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. 고속도로 기준 범위</h2>
+<img alt="즉흥 RP 고속도로 기준 범위" class="w-full rounded-xl border border-slate-200 dark:border-slate-800" src="https://exit-2026.gitbook.io/exit-rp/files/jOZ7LN9brxeN8gI4kzcp"/ loading="lazy">
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 승리 : 범죄 면책</li>
+<li>강도 패배 : 인당 벌금 2억 구금 25분 / 참여자 전원 착용 무기 압수 / 최초 도주자 범죄 행위 가중 처벌</li>
+</ul>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-9">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 수배 ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 출근 공무원 전원 참여 가능(동일 팩션) / 시민(사기업 팩션 포함)은 수배자만 참여 가능 / 조직은 전원 참여 가능</li>
+<li><strong>사용 가능 무기 :</strong> 샷건, 스나이퍼, 투척무기를 제외한 모든 무기 사용 가능</li>
+<li><strong>제한 시간 :</strong> 30분</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-3">
+<h3 class="font-bold text-blue-500 flex items-center gap-2 text-sm md:text-base"><i class="fa-solid fa-circle-info"></i><span>아래 유의사항을 안읽고 난 후 법률에 대한 미숙지로 사건처리 진행 될 경우 관리자 처벌 진행 되니 꼭 참조해주세요. 법률에 없다고 자기 멋대로 판단또한 금지 됩니다.</span></h3>
+<ul class="list-disc pl-5 space-y-2">
+<li>산 / 바다 / 강 / 지하 / 보호구역 / 기찻길 / 건물 내 이동 금지</li>
+<li>고의적일 경우 패알처리 / 범퍼로 인한 경우 즉시 벗어나야 하며 범위 밖에서 안으로 이동하면서 사격 금지</li>
+<li>공무 팩션 측은 최대 1대까지 헬기를 사용할 수 있다.</li>
+<li>알피 도중 차량 비콘을 사용할 수 없다.</li>
+<li>알피 중 바다에 진입할 경우 사망 처리한다. ( 양측 동일 )</li>
+<li>RP 도중 및 RP 후 공무원 차량 도난은 금지</li>
+<li>알피 중 이동수단을 변경할 시 패알처리<br/>ㄴ 단 , 공무 팩션의 차량 -&gt; 헬기로의 변경은 최초 1회에 한해 허용<br/>ㄴ 걸어서 도주는 상관 X</li>
+<li>알피 중 팩션 지원의 경우 지원콜이 동반되어야 한다</li>
+<li>수배 RP 진행 중 사유지 진입은 불가능하다</li>
+<li>수배자가 지원 요청을 하여 팩션원이 지원을 왔더라도, 수배자가 사망할 경우 알피는 즉시 종료된다.</li>
+<li>시민은 최초 범죄 발생(메가폰 울린 시점 기준) 시 동승해 있던 탑승자가 수배 지원이 가능하며, 수배 지원자는 수배자 차량만 탑승 가능하다.(최초 수배자 사망 시 패배)</li>
+<li>수배 RP 시작 이후 출근한 공무원은 참여할 수 없다. 조직 및 타 기업팩션 또한 동일</li>
+<li>사기업 팩션 및 조직 팩션인 수배자가 사유지에 있을 경우, 영장RP로 전환<br/>ㄴ 본인이 소속하지 않은 팩션 사유지로 도주 불가</li>
+<li>시민은 전멸을 치지 않아도 시민 사망 시 RP 종료로 간주하고 체포가 가능하다.</li>
+</ul>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>공무원이 출석 요구를 했으나 제한시간 내 출석을 하지 않은 유저 상대로 진행 가능.</li>
+<li>인게임 사이드 공지로 [닉네임]/[고유번호]/[시간]와 수배 RP 시작을 공표하여 수배 RP를 시작한다. 1회 진행</li>
+<li>공무원은 위치추적 시스템을 이용하여 수배자를 추적한다.</li>
+<li>제한 시간동안 수배자를 체포하지 못할 경우 수배자의 승리 또는 최초 수배자 사망시 공무원 승리/모든 RP 종료</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>수배자 승리 : 범죄 면책</li>
+<li>수배자 패배 : 참여 인원 인당 벌금 3억 구금 30분 / 수배자 범죄 행위 가중처벌</li>
+</ul>
+</div>
+</section>
+</div><div class="doc-page hidden space-y-8" id="doc-law-story-10">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 영장 ]</h1>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 출근 공무원 전체 참여 가능 / 팩션원 전체 참여 가능</li>
+<li>사용 가능 무기 : 샷건 또는 스나이퍼 최대 1명 / 투척무기 제외 스턴건 제외 모든 무기 사용 가능</li>
+<li>제한 시간 : 30분</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ol class="list-decimal pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 발생 이후 중도 참여 불가능</li>
+<li>타 팩션과 합동 RP 불가능</li>
+<li>사유지 구역 내 차량을 소환하여 진입이 불가하도록 경로를 막는 행위 금지</li>
+<li>Q엄폐 사용 불가능</li>
+<li>엇각/우각 발생 시 중단 후 영상 확인을 통해 채팅 중단 시점부터 재RP 진행 가능 / 양측 협의 시 재알 가능</li>
+<li>무력진압 후 사망할 경우, 소생 후 재참여 불가(소생된 경우, 사망자리에서 RP 종료까지 레그돌)</li>
+<li>경찰은 F7 기준 인원으로 공표할 수 있으나, 팩션측에서는 무력진압 시작전 부재 인원에 대한 인원 정정을 요청할 수 있다.</li>
+<li>차량 탑승 후 총기 발포와 볼링 행위 금지</li>
+<li>사유지 범위 내부&gt;외부/외부&gt;내부 사격 금지</li>
+<li>건물 입구나 계단쪽 진입로에 공무원측은 건물 입구에 시체로 인해 진입이 어려울 경우, 중단한 후 사망 인원을 이동시킬 수 있다.</li>
+<li>영장RP 진행시 사유지 내에 있는 모든 문 잠금을 해제한 상태로 진행하여야 한다.</li>
+<li>밀공장 건물 창문을 통해 외부&gt; 내부 / 내부&gt;외부 사격금지한다.</li>
+<li>수배 → 영장 전환 후 준비시간 최대 20분 (초과시 패알처리)</li>
+<li>영장은 중단 횟수 제한 없음</li>
+</ol>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h3 class="font-bold text-blue-500 flex items-center gap-2"><i class="fa-solid fa-circle-info"></i><span>사유지 범위</span></h3>
+<p>사유지 범위는 건물이 아닌 전체 구역을 포함</p>
+</div>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h3 class="font-bold text-blue-500 flex items-center gap-2"><i class="fa-solid fa-circle-info"></i><span>사망 인원 이동</span></h3>
+<p>중단 후 사망 인원은 소생한 후 RP 구역 밖으로 이동</p>
+<p>살아 있는 인원은 중단 위치에서 대기 해야함</p>
+</div>
+<div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-xs md:text-sm text-slate-800 dark:text-slate-200 space-y-2">
+<h3 class="font-bold text-blue-500 flex items-center gap-2"><i class="fa-solid fa-circle-info"></i><span>문 잠금 해제 예외</span></h3>
+<p>서버 내 버그 및 사유지 파일 버그로 인한 문잠금 해제 불가능 시 미리 공무원이 무력진압 채팅을 하기전 공무원에게 알려야 한다.</p>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행 방법</h2>
+<ul class="list-disc pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>공무원은 사유지에 도착하여 [RP 채팅]으로 영장 RP를 공표한다.(3회)</li>
+<li>공표 후 팩션측 대표자는 사유지 밖으로 나와 영장을 확인한 후 협조 여부를 말한다.(협조 거부or승낙)</li>
+<li>승낙 시 공무원에게 수배자 인계 및 RP 종료</li>
+<li>협조 거부 시 대표자는 사유지안으로들어가고공무원은 사유지 앞에서 5분 대기 후 [RP 채팅]으로 인원과 사유지 무력 진압을 알리고 RP 구역으로 진입하면 RP가 시작된다.(최소 3번)</li>
+</ul>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-2.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>강도 승리 : 범죄 면책</li>
+<li>강도 패배 : 팩션 참여 인원 인당 벌금 4억 / 구금 30분</li>
+<li><strong>참여자 전원 불법 물건, 착용 무기 압수 / 최초 수배자 범죄 행위 가중 처벌</strong></li>
+</ul>
+</div>
+</section>
+</div>
+<div class="doc-page hidden space-y-6" id="doc-law-org-overview">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">📋 조직 RP 법률</h1>
+<p class="text-sm text-slate-600 dark:text-slate-400">아래의 하위 메뉴를 선택하여 세부 조직 RP 법률을 확인하세요.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-org-0', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 지상 C ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 지상 C ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-org-1', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 지상 D ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 지상 D ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-org-2', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 남공 게릴라 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 남공 게릴라 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-org-3', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 사유지 게릴라 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 사유지 게릴라 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-org-4', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 카지노 게릴라 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 카지노 게릴라 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+<div class="group p-4 bg-white dark:bg-[#131c31] border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl cursor-pointer shadow-sm transition-all flex items-center justify-between" onclick="switchDoc('law-org-5', 'Exit LAW &gt; 📋 조직 RP 법률', '[ 밀공장 게릴라 ]')">
+<span class="text-base font-bold text-slate-800 dark:text-slate-100 group-hover:text-blue-500 transition">[ 밀공장 게릴라 ]</span>
+<i class="fa-solid fa-chevron-right text-slate-400 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all text-xs"></i>
+</div>
+</div>
+</div>
+<div class="doc-page hidden space-y-6" id="doc-law-org-0">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 지상 C ]</h1>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본규칙</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>RP 가능 인원 : 각 조직당 4~ 7명이며 양측 인원이 동일해야 함</li><li>RP 중 인원 교체 불가능 / RP가 끝난 후 교체 가능</li><li>사용가능한 무기 : 카빈소총 / 근접무기만 가능</li><li>진행방식 : 5판 3선승 전멸전</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>중도 참여 불가</li><li>구역 이탈 시 사망처리</li><li>지붕 위 금지 / 실수로 올라간 경우, 즉시 내려와야 함</li><li>담쪽 틈새를 통한 사격 불가</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>RP 채팅으로 <strong>상대조직명 / 인원 / RP이름</strong>을 3번공표한다. → 흑 55 지C ㅅㅍㅈㄱ<br><span class="text-slate-500 dark:text-slate-400">※ 상대측 최소 인원이 서버에 접속해 있을 때 선포 가능하며, 상대 조직은 인원 부족 시 거절할 수 있다</span></li><li>준비 시간 동안 선포 조직 측 A진영, 상대 조직 B진영에서 대기한다.</li><li>준비가 완료되면 선포 조직측에서 RP 카운트를 진행하고 RP를 시작한다.</li><li>상대방을 먼저 전멸시키는 측이 승리한다.</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>패배 측 : 상대 조직에게 인당 3천만원</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. 지상C RP 구역</h2>
+<div class="space-y-3 text-center"><figure><img src="https://exit-2026.gitbook.io/exit-rp/files/uU4uNUQyERygs063VtHm" alt="" loading="lazy"><figcaption></figcaption></figure><p><strong>&lt; A 진영 &gt;</strong></p><figure><img src="https://exit-2026.gitbook.io/exit-rp/files/EJcTzEoiBNwWuHv9pYEJ" alt="" width="374" loading="lazy"><figcaption></figcaption></figure><p><strong>&lt; B 진영 &gt;</strong></p><figure><img src="https://exit-2026.gitbook.io/exit-rp/files/io6zCf139MfZATmEpjll" alt="" loading="lazy"><figcaption></figcaption></figure></div>
+</div>
+</div>
+<div class="doc-page hidden space-y-6" id="doc-law-org-1">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 지상 D ]</h1>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본규칙</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>RP 가능 인원 : 각 양 측 조직인원 최대 3명</li><li>양 조직측 인원은 동일해야 한다.</li><li>사용 가능한 무기 : 카빈소총 및 근접무기만 가능</li><li>진행방식 : 5판 3선승 전멸전</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>중도 참여 불가</li><li>구역 이탈 시 사망처리</li><li>지붕 위 금지 / 실수로 올라간 경우, 즉시 내려와야 함</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>RP 채팅으로 <strong>상대조직명 / 인원 / RP이름</strong> 3번 공표 후 RP 가능 여부를 확인한다. → 흑 55 지D ㅅㅍㅈㄱ<br><span class="text-slate-500 dark:text-slate-400">※ 상대측 최소 인원이 서버에 접속해 있을 때 선포 가능하며, 상대 조직은 인원 부족 시 거절할 수 있다.</span></li><li>준비 시간 동안 선포 조직 측 A진영, 상대 조직 B진영에서 대기한다.</li><li>준비가 완료되면 선포 조직측에서 RP 카운트를 진행하고 RP를 시작한다.</li><li>상대방을 먼저 전멸시키는 측이 승리한다.</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>패배 측 : 상대 조직에게 인당 2천만원</li></ul>
+</div><div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. 지상 D RP구역</h2>
+<div class="space-y-3 text-center"><figure><img src="https://exit-2026.gitbook.io/exit-rp/files/ni4ZxWbIK8BLb8j7Lo6Y" alt="" loading="lazy"><figcaption></figcaption></figure><p><strong>&lt; A 진영 &gt;</strong><br><img src="https://exit-2026.gitbook.io/exit-rp/files/Muml36aFs9puGfCx6Sij" alt="" loading="lazy"></p><p><strong>&lt; B 진영 &gt;</strong></p><figure><img src="https://exit-2026.gitbook.io/exit-rp/files/rmf49KOSomswb59ioVjk" alt="" loading="lazy"><figcaption></figcaption></figure></div>
+</div>
+</div>
+<div class="doc-page hidden space-y-6" id="doc-law-org-2">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 남공 게릴라 ]</h1>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본 규칙</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 선포 조직 5명 ~ 10명 / 선포 조직과 동일해야 한다.</li>
+<li>사용 가능 무기 : 투척 무기, 샷건, 스나이퍼 제외 모든 무기 사용 가능</li>
+<li>진행방식 : 전멸전</li>
+<li>제한시간 : 없음</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>중도 참여 불가</li>
+<li>구역 이탈 시 사망처리 / 범퍼로 인해 구역을 벗어날 경우 다시 빠르게 복귀한다.(영역 밖에서 발포 불가/안에서 밖으로 발포 가능)</li>
+<li>알피 중 차량 비콘 사용 불가능 (선포당한 조직은 RP 시작 후 최초 차량 소환 가능)</li>
+<li>RP 선포 쿨타임 30분(종료시간 기준으로부터 선포 조직만 해당)</li>
+<li>차량이 퍼질 시 차량에서 하차한 후 총기 발포 가능</li>
+<li>차량이 퍼진 후 다른 사람의 차량 탑승 불가</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>선포 측은 RP 채팅으로 준비 시간(최대 20분) / 자신 조직명 인원수 / 상대 조직명 인원수 / 위치 알리고 RP 가능 여부를 확인한다 → EX) 샘 5 / 뚱 5 남공 선포<br><span class="text-slate-500 dark:text-slate-400">→ 상대측 최소 인원이 서버에 접속해 있을 때만 선포 가능하며, 상대 조직은 인원 부족 시 거절 가능</span></li>
+<li>준비 시간 동안 선포 조직은 A진영(입구 기준 좌측), 상대 조직은 B진영(입구 기준 우측)에서 대기한다.</li>
+<li>선포 조직 측에서 RP 카운트를 진행하고 RP가 시작된다.</li>
+<li>상대방을 먼저 전멸시키는 조직이 승리한다</li>
+<li>잠수존 잠수 상태인유저는 제외처리한다</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>패배 측 : 상대 조직에게 인당 3천만원</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. 남부공항 게릴라 범위 안내</h2>
+<div class="space-y-3 text-center">
+<figure><img src="https://exit-2026.gitbook.io/exit-rp/files/PjUxTYep1bHMX68vcDR7" alt="" loading="lazy"><figcaption></figcaption></figure>
+<p><strong>[ A 진영 ]</strong></p>
+<figure><img src="https://exit-2026.gitbook.io/exit-rp/files/xRViJIraDnPUYxYDH5jj" alt="" loading="lazy"><figcaption></figcaption></figure>
+<p><strong>[ B 진영 ]</strong></p>
+<figure><img src="https://exit-2026.gitbook.io/exit-rp/files/F1hhhSzWauP4mfnRhVhr" alt="" loading="lazy"><figcaption></figcaption></figure>
+</div>
+</div>
+</div>
+<div class="doc-page hidden space-y-6" id="doc-law-org-3">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 사유지 게릴라 ]</h1>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본규칙</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 선포 조직 3 ~ 5명 / 상대 조직 3 ~ 5명(선포 인원과 동일)</li>
+<li>사용 가능 무기 : 샷건, 스나이퍼 제외 모든 무기 사용 가능</li>
+<li>진행방식 : 전멸전</li>
+<li>제한시간 : 없음</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 발생 이후 접속한 인원 중도 참여 불가</li>
+<li>구역 이탈 시 사망처리 / 범퍼로 이탈한 경우, 즉시 RP 구역으로 진입(도중 이탈 시 구역 밖에서 발포 불가/안에서 밖으로 발포 가능)</li>
+<li>알피 중 차량 비콘 사용 불가능(단, 선포당한 측은 RP 시작 후 최초 차량 소환은 가능)</li>
+<li>RP영역 안에서 진입하는 적을 안에서 밖으로 발포 가능(진입 후 영역 이탈의 경우, 발포 가능)</li>
+<li>건물 안, 옥상 진입 금지</li>
+<li>게릴라RP 선포측 참여자가 선포 전 RP 영역 안에 있을 경우 패배 처리</li>
+<li>차량의 절반 이상이 영역을 이탈한 경우, 영역 이탈로 간주</li>
+<li>RP 선포 쿨타임 30분(종료시간 기준으로부터 선포 조직만 해당)</li>
+<li>모든 사유지 게릴라의 도로 옆 연한 흙길 사용 가능.</li>
+<li>범위 안 인원은 범위 밖 인원을 사격 가능, 범위 밖 인원은 범위 안 인원을 사격할 수 없다.</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>선포 조직은 RP 채팅으로 / 상대 조직명 / RP 위치 / 인원을 알리고 즉시 RP가 시작된다.</li>
+<li>RP 구역 내에 이미 위치해 있던 적 인원은 즉시 공격할 수 있다, 지원 중인 측의 인원 파악을 위해 공격측은 사망시킨 인원을 즉시 채팅으로 알린다.</li>
+<li>영역 밖에 있던 조직원은 선포 인원에 맞춰 가까운 차고지에서 차량을 소환한 후 게릴라 RP선포 이후 10분 내 참여할 수 있다.(선포를 기준으로 10분 이후 참여 불가)</li>
+<li>상대 조직을 먼저 전멸 시키면 승리한다.</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. 보상 및 처벌</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>패배 측 : 상대 조직에게 인당 3천만원</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. 사유지 게릴라 범위 안내</h2>
+<div class="space-y-3 text-center">
+<p><strong>&lt; 호수 위 저택 &gt;</strong></p>
+<figure><img src="https://exit-2026.gitbook.io/exit-rp/files/bzbmsRUFuRvIg0PGVerh" alt="" loading="lazy"><figcaption></figcaption></figure>
+<p><strong>&lt; 말농장 &gt;</strong></p>
+<figure><img src="https://exit-2026.gitbook.io/exit-rp/files/UDbqA8MlMx1qA2pJdzKF" alt="" width="465" loading="lazy"><figcaption></figcaption></figure>
+</div>
+</div>
+</div>
+<div class="doc-page hidden space-y-6" id="doc-law-org-4">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 카지노 게릴라 ]</h1>
+<div class="space-y-3">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본규칙</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 선포 조직 및 상대 조직 인원 최소 1명이상 일 경우 가능</li>
+<li>사용 가능 무기 : 투척 무기 / 샷건 / 스나이퍼 제외 모든 무기 사용 가능</li>
+<li>진행방식 : 전멸전</li><li>제한시간 : 없음</li>
+</ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 발생 이후 접속한 인원 중도 참여 불가</li><li>영역 밖에 있던 조직원은 게릴라 RP선포 기준 10분 내 참여할 수 있다.</li>
+<li>구역 이탈 시 사망처리 / 범퍼로 이탈한 경우, 즉시 RP 구역으로 진입하면 정상진행<br>단 , 도중 이탈 시 구역 밖에서 발포 불가/안에서 밖으로 발포 가능</li>
+<li>RP영역 안에서 진입하는 적을 안에서 밖으로 발포 불가능(진입 후 영역 이탈의 경우, 발포 가능)</li>
+<li>알피 중 차량 비콘 사용 불가능(단 RP 시작 후 최초 차량 소환은 가능)</li><li>건물 안, 옥상 진입 금지</li>
+<li>게릴라RP 참여자가 선포 전RP 영역 안에 있을 경우 패배 처리</li><li>발포 금지 구역 및 영역 밖 사격 시 패배 처리</li>
+<li>차량의 절반 이상이 영역을 이탈한 경우, 영역 이탈로 간주</li><li>RP 선포 쿨타임 30분(종료시간 기준으로부터 선포 조직만 해당)</li>
+<li>RP 중 구금 유저 및 F7 기준 잠수 유저는 제외 후 진행됩니다.<br>ㄴ 구금 후 풀린 유저가 잠수 탄 경우는 정상으로 진행</li>
+</ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>선포 조직은 RP 채팅으로 / 상대 조직명 / RP 인원 / 위치을 선포하면 RP가 시작된다.<br>→ Ex) 샘 55 카지노 선포<br>→ 상대방 최소 인원 3명 이상일 경우. 선포 가능하며 인원 부족 시 선포할 수 없다.</li>
+<li>구역 안에 있던 조직원은 공표 후 차량을 소환하여 발포할 수 있으며, 공표당한 조직은 차량을 소환할 수 없는 상황에는 즉시 발포할 수 있다.</li>
+<li>영역 밖에 있던 조직원을 가까운 차고지에서 차량을 소환한 후 게릴라 RP선포 이후 10분 내 참여할 수 있다.(선포를 기준으로 10분 이후 참여 불가)</li>
+<li>상대방을 먼저 전멸시키는측이 승리한다.</li>
+</ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>패배 측 : 상대 조직에게 인당 3천만원</li></ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. 카지노 게릴라 범위 안내</h2>
+<div class="space-y-3 text-center"><figure><img src="https://exit-2026.gitbook.io/exit-rp/files/4xxEvm78G6KewN8HdCqS" alt="" loading="lazy"><figcaption></figcaption></figure></div></div>
+</div>
+<div class="doc-page hidden space-y-6" id="doc-law-org-5">
+<h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">[ 밀공장 게릴라 ]</h1>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. 기본규칙</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 가능 인원 : 선포 조직 및 상대 조직 인원 최소 1명이상 일 경우 가능</li><li>진행 방식 : 전멸전</li><li>사용 가능 무기 : 투척 무기, 샷건, 스나이퍼 제외 모든 무기 사용 가능</li>
+</ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. 유의사항</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>RP 발생 이후 접속한 인원 중도 참여 불가</li><li>영역 밖에 있던 조직원은 게릴라 RP선포 기준 10분 내 참여할 수 있다.</li>
+<li>구역 이탈 시 사망처리 / 범퍼로 이탈한 경우, 즉시 RP 구역으로 진입(도중 이탈 시 구역 밖에서 발포 불가/안에서 밖으로 발포 가능)</li>
+<li>알피 중 차량 비콘 사용 불가능(단 RP 시작 후 최초 차량 소환은 가능)</li><li>RP영역 안에서 진입하는 적을 안에서 밖으로 발포 불가능(진입 후 영역 이탈의 경우, 발포 가능)</li>
+<li>건물 안, 옥상 진입 금지</li><li>발포 금지 구역 및 영역 밖 사격 시 패배 처리</li>
+<li>게릴라RP 참여자가 선포 전 RP 영역 안에서 선포하는 경우 패배처리</li>
+<li>RP 중 구금 유저 및 F7 기준 잠수 유저는 제외 후 진행됩니다.<br>ㄴ 구금 후 풀린 유저가 잠수 탄 경우는 정상으로 진행</li>
+</ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. 진행방법</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+<li>선포 조직은 RP 채팅으로 / 상대 조직명 / RP 인원 / 위치을 선포하면 RP가 시작된다.<br>→ EX) 샘크로 55 밀공장 선포<br>→ 상대방 최소 인원 3명 이상일 경우. 선포 가능하며 인원 부족 시 선포할 수 없다.</li>
+<li>구역 안에 있던 조직원은 공표 후 차량을 소환하여 발포할 수 있으며, 공표당한 조직은 차량을 소환할 수 없는 상황에는 즉시 발포할 수 있다.</li>
+<li>영역 밖에 있던 조직원은 가까운 차고지에서 차량을 소환한 후 게릴라 RP선포 이후 10분 내 참여할 수 있다.(선포를 기준으로 10분 이후 참여 불가)</li>
+<li>상대방을 먼저 전멸 시키는 측이 승리한다.</li>
+</ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. RP 보상 및 벌금</h2>
+<ul class="list-disc pl-5 space-y-1.5 text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><li>패배 측 : 상대 조직에게 인당 3천만원</li></ul></div>
+<div class="space-y-3"><h2 class="text-xl font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. 밀공장 범위 구역 안내</h2>
+<div class="space-y-3 text-center"><figure><img src="https://exit-2026.gitbook.io/exit-rp/files/FoIj6PwW5FPjtKQpqcFR" alt="" loading="lazy"><figcaption></figcaption></figure></div></div>
+</div>
+</main></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    function setLawExpanded(expanded) {
+      const lawMenu = document.getElementById('law-menu');
+      const story = document.getElementById('story-rp-menu')?.parentElement;
+      const org = document.getElementById('org-rp-menu')?.parentElement;
+      const chevron = document.getElementById('law-chevron');
+
+      // Exit LAW가 접히면 서버 제제법률부터 조직 RP 법률까지 전부 숨김
+      if (lawMenu) lawMenu.classList.toggle('hidden', !expanded);
+      if (story) story.classList.toggle('hidden', !expanded);
+      if (org) org.classList.toggle('hidden', !expanded);
+      if (chevron) chevron.classList.toggle('rotate-180', expanded);
+    }
+
+    function openLawCategory() {
+      switchDoc('law-overview', 'Exit LAW', '⚖️ Exit LAW');
+      setLawExpanded(true);
+    }
+
+    function handleLawCategoryClick(event) {
+      if (event) event.stopPropagation();
+      switchDoc('law-overview', 'Exit LAW', '⚖️ Exit LAW');
+      const lawMenu = document.getElementById('law-menu');
+      setLawExpanded(!!lawMenu && lawMenu.classList.contains('hidden'));
+    }
+
+    function toggleLawMenu(event) {
+      if (event) event.stopPropagation();
+      const lawMenu = document.getElementById('law-menu');
+      setLawExpanded(!!lawMenu && lawMenu.classList.contains('hidden'));
+    }
+
+    function handleCategoryClick(event, docId, categoryText, titleText, menuId, chevronId) {
+      if (event) event.stopPropagation();
+
+      const submenu = document.getElementById(menuId);
+      const isCollapsed = !!submenu && submenu.classList.contains('hidden');
+
+      // 스토리/조직 RP 법률은 "접힌 상태에서 제목을 클릭했을 때만"
+      // 오른쪽 상세 영역에 하위 RP 바로가기 카드가 표시된다.
+      if (menuId === 'story-rp-menu' || menuId === 'org-rp-menu') {
+        if (isCollapsed) {
+          // onclick에는 doc-law-story-overview 형태로 들어오지만
+          // switchDoc은 law-story-overview 형태를 받는다.
+          const overviewDocId = docId.startsWith('doc-') ? docId.substring(4) : docId;
+          switchDoc(overviewDocId, categoryText, titleText);
+        }
+        return;
+      }
+
+      // 기존 다른 카테고리 동작은 그대로 유지
+      switchDoc(docId, categoryText, titleText);
+      const chevron = document.getElementById(chevronId);
+      if (submenu && submenu.classList.contains('hidden')) {
+        submenu.classList.remove('hidden');
+      }
+      if (chevron && !chevron.classList.contains('rotate-180')) {
+        chevron.classList.add('rotate-180');
+      }
+    }
+
+    function toggleSubMenu(menuId, chevronId, event) {
+      if (menuId === 'law-menu') {
+        toggleLawMenu(event);
+        return;
+      }
+      if (event) event.stopPropagation();
+
+      const submenu = document.getElementById(menuId);
+      const chevron = document.getElementById(chevronId);
+      if (!submenu) return;
+
+      submenu.classList.toggle('hidden');
+      if (chevron) chevron.classList.toggle('rotate-180');
+
+      // 스토리/조직 RP 메뉴를 펼치면 오른쪽 바로가기 카드는 숨기고,
+      // 다시 접으면 해당 카드를 다시 보여준다.
+      if (menuId === 'story-rp-menu' || menuId === 'org-rp-menu') {
+        const overviewId = menuId === 'story-rp-menu'
+          ? 'doc-law-story-overview'
+          : 'doc-law-org-overview';
+        const overview = document.getElementById(overviewId);
+
+        if (submenu.classList.contains('hidden')) {
+          const categoryText = menuId === 'story-rp-menu'
+            ? 'Exit LAW > 📋 스토리 RP 법률'
+            : 'Exit LAW > 📋 조직 RP 법률';
+          const titleText = menuId === 'story-rp-menu'
+            ? '📋 스토리 RP 법률'
+            : '📋 조직 RP 법률';
+          switchDoc(
+            menuId === 'story-rp-menu' ? 'law-story-overview' : 'law-org-overview',
+            categoryText,
+            titleText
+          );
+        } else if (overview) {
+          overview.classList.add('hidden');
+        }
+      }
+    }
+
+    function switchDoc(docId, categoryText, titleText) {
+      document.querySelectorAll('.doc-page').forEach(page => page.classList.add('hidden'));
+      
+      const targetPage = document.getElementById('doc-' + docId);
+      if (targetPage) {
+        targetPage.classList.remove('hidden');
+      }
+
+      if (categoryText) {
+        document.getElementById('breadcrumbCategory').innerText = categoryText;
+      }
+      if (titleText) {
+        document.getElementById('breadcrumbTitle').innerText = titleText;
+      }
+
+      document.querySelector('main').scrollTop = 0;
+    }
+
+    function setupRpImageFallbacks() {
+      const fallbackBases = [
+        'https://exit-2026.gitbook.io/files/',
+        'https://exit-2026.gitbook.io/exit-rp/files/'
+      ];
+      document.querySelectorAll('main .doc-page img[src^="/files/"]').forEach(img => {
+        const original = img.getAttribute('src');
+        const fileId = original.split('/').pop();
+        const candidates = [original, ...fallbackBases.map(base => base + fileId)];
+        let index = 0;
+        img.onerror = function() {
+          index += 1;
+          if (index < candidates.length) {
+            img.src = candidates[index];
+          } else {
+            img.style.display = 'none';
+          }
+        };
+        // 로컬 file://에서 /files/...가 깨지는 경우 첫 번째 외부 후보로 즉시 전환
+        if (location.protocol === 'file:') {
+          index = 1;
+          img.src = candidates[index];
+        }
+      });
+    }
+
+    function syncCollapsedRpOverview() {
+      const targets = [
+        { menuId: 'story-rp-menu', docId: 'law-story-overview', categoryText: 'Exit LAW > 📋 스토리 RP 법률', titleText: '📋 스토리 RP 법률' },
+        { menuId: 'org-rp-menu', docId: 'law-org-overview', categoryText: 'Exit LAW > 📋 조직 RP 법률', titleText: '📋 조직 RP 법률' }
+      ];
+
+      // 현재 보고 있는 문서가 스토리/조직 RP 하위 문서일 때,
+      // 해당 메뉴가 접혀 있으면 오른쪽에 그 카테고리 개요(바로가기)를 복원한다.
+      const visiblePage = document.querySelector('.doc-page:not(.hidden)');
+      if (!visiblePage) return;
+
+      targets.forEach(target => {
+        const submenu = document.getElementById(target.menuId);
+        if (!submenu || !submenu.classList.contains('hidden')) return;
+
+        const isStoryPage = visiblePage.id.startsWith('doc-law-story-');
+        const isOrgPage = visiblePage.id.startsWith('doc-law-org-');
+        const matches = target.menuId === 'story-rp-menu' ? isStoryPage : isOrgPage;
+        if (matches && visiblePage.id !== 'doc-' + target.docId) {
+          switchDoc(target.docId, target.categoryText, target.titleText);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setupRpImageFallbacks();
+      setLawExpanded(true);
+      syncCollapsedRpOverview();
+    });
+
+    let isDark = true;
+    function toggleDarkMode() {
+      isDark = !isDark;
+      const html = document.documentElement;
+      const themeText = document.getElementById('themeText');
+      const themeIcon = document.getElementById('themeIcon');
+
+      if (isDark) {
+        html.classList.add('dark');
+        themeText.innerText = 'Dark';
+        themeIcon.className = 'fa-solid fa-moon text-blue-400';
+      } else {
+        html.classList.remove('dark');
+        themeText.innerText = 'Light';
+        themeIcon.className = 'fa-solid fa-sun text-amber-500';
+      }
+    }
+
+    function filterMenu() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const buttons = document.querySelectorAll('#sidebarNav button');
+
+      buttons.forEach(btn => {
+        const text = btn.innerText.toLowerCase();
+        btn.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+<script id="main-scroll-reset">
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', function () {
+    const main = document.querySelector('main');
+    if (main) main.scrollTop = 0;
+  });
+</script>
+</body>
+</html>
