@@ -174,10 +174,229 @@
 <style id="story-layout-fix">
       main > .doc-page { width: 100%; min-width: 0; }
       main > .doc-page.hidden { display: none !important; }
-    </style></head>
+    </style>
+<style id="mobile-responsive-fix">
+  /* 모바일 전용 메뉴 버튼 */
+  #mobileMenuBtn {
+    display: none;
+  }
+
+  /* 모바일 메뉴 배경 */
+  #mobileMenuBackdrop {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    body {
+      overflow: hidden !important;
+    }
+
+    header {
+      height: 58px !important;
+      padding-left: .75rem !important;
+      padding-right: .75rem !important;
+      gap: .5rem;
+    }
+
+    header > div:first-child {
+      width: auto !important;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    header > div:first-child > div:last-child p {
+      display: none;
+    }
+
+    header > div:first-child > div:first-child {
+      width: 34px !important;
+      height: 34px !important;
+    }
+
+    header > div:first-child svg {
+      width: 30px !important;
+      height: 30px !important;
+    }
+
+    header h1 {
+      font-size: .95rem !important;
+    }
+
+    /* 데스크톱용 가운데 네비는 모바일에서 숨기고 메뉴 버튼을 사용 */
+    header > div:nth-child(2) {
+      flex: 0 0 auto !important;
+      width: auto !important;
+      justify-content: flex-end !important;
+    }
+
+    header > div:nth-child(2) > nav {
+      display: none !important;
+    }
+
+    #darkModeBtn {
+      margin-left: 0 !important;
+      padding: .45rem .6rem !important;
+    }
+
+    #darkModeBtn span {
+      display: none;
+    }
+
+    header > div:last-child {
+      display: none !important;
+    }
+
+    #mobileMenuBtn {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 40px;
+      border-radius: .65rem;
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 5px 16px rgba(37, 99, 235, .25);
+      border: 0;
+      cursor: pointer;
+      z-index: 60;
+    }
+
+    #mobileMenuBtn i {
+      font-size: 1rem;
+    }
+
+    /* 기존 사이드바를 모바일에서는 슬라이드 메뉴로 재사용 */
+    body > div.flex-1 > aside {
+      display: flex !important;
+      position: fixed !important;
+      z-index: 55 !important;
+      top: 58px !important;
+      left: 0 !important;
+      bottom: 0 !important;
+      width: min(86vw, 340px) !important;
+      max-width: 340px !important;
+      transform: translateX(-105%);
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: none;
+      border-right: 1px solid #1e293b;
+    }
+
+    body > div.flex-1 > aside.mobile-menu-open {
+      transform: translateX(0);
+      box-shadow: 12px 0 35px rgba(0,0,0,.35);
+    }
+
+    body > div.flex-1 > aside > div {
+      width: 100%;
+      padding: .9rem !important;
+      padding-bottom: 5rem !important;
+    }
+
+    /* 모바일 메뉴 상단 검색 */
+    #mobileMenuSearchWrap {
+      display: block !important;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding-bottom: .75rem;
+      margin-bottom: .5rem;
+      background: inherit;
+    }
+
+    #mobileMenuSearchWrap input {
+      width: 100%;
+      min-height: 40px;
+      font-size: .82rem;
+    }
+
+    main {
+      min-width: 0 !important;
+      width: 100% !important;
+      padding: .9rem !important;
+    }
+
+    main > .max-w-5xl {
+      width: 100% !important;
+      max-width: none !important;
+    }
+
+    /* 브레드크럼은 좁은 화면에서 두 줄로 자연스럽게 표시 */
+    main .border-b {
+      gap: .5rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: .7rem !important;
+    }
+
+    #lastUpdated {
+      font-size: .65rem;
+      margin-left: auto;
+    }
+
+    /* 문서 제목/본문 가독성 */
+    main .doc-page {
+      font-size: .82rem !important;
+    }
+
+    main .doc-page h1 {
+      font-size: 1.2rem !important;
+      line-height: 1.3 !important;
+      word-break: keep-all;
+    }
+
+    main .doc-page h2 {
+      font-size: .95rem !important;
+    }
+
+    /* 표는 강제로 찌그러뜨리지 않고 가로 스크롤 */
+    main .doc-page .overflow-x-auto {
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    main .doc-page table {
+      min-width: 620px;
+    }
+
+    /* 너무 긴 이미지도 화면 밖으로 나가지 않게 */
+    main .doc-page img {
+      max-width: 100% !important;
+      height: auto !important;
+      max-height: 55vh !important;
+    }
+
+    #mobileMenuBackdrop {
+      display: block;
+      position: fixed;
+      inset: 58px 0 0 0;
+      z-index: 50;
+      background: rgba(0,0,0,.52);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+    }
+
+    #mobileMenuBackdrop.mobile-backdrop-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #mobileMenuSearchWrap {
+      display: none !important;
+    }
+  }
+</style>
+</head>
 <body class="bg-slate-50 text-slate-800 dark:bg-[#0b0f19] dark:text-slate-100 h-screen flex flex-col overflow-hidden antialiased selection:bg-blue-500 selection:text-white">
 <!-- 1. 상단 헤더 -->
 <header class="h-16 border-b border-slate-200 dark:border-[#1e293b] bg-white/90 dark:bg-[#0e1424]/80 backdrop-blur px-6 flex items-center justify-between shrink-0 z-30 transition-colors">
+<button id="mobileMenuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false" onclick="toggleMobileMenu()">
+  <i class="fa-solid fa-bars" id="mobileMenuIcon"></i>
+</button>
+
 <div class="flex items-center space-x-3 w-1/4">
 <div class="w-10 h-10 flex items-center justify-center shrink-0">
 <svg class="w-9 h-9 drop-shadow-md" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -222,9 +441,21 @@
 </header>
 <!-- 2. 메인 컨테이너 -->
 <div class="flex flex-1 overflow-hidden">
+<div id="mobileMenuBackdrop" onclick="closeMobileMenu()" aria-hidden="true"></div>
 <!-- 좌측 사이드바 -->
 <aside class="w-64 bg-white dark:bg-[#0e1424] border-r border-slate-200 dark:border-[#1e293b] shrink-0 hidden md:flex flex-col transition-colors">
 <div class="p-4 space-y-4 overflow-y-auto text-xs" id="sidebarNav">
+<div id="mobileMenuSearchWrap" class="hidden">
+  <div class="relative">
+    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+    <input id="mobileSearchInput"
+      class="w-full bg-slate-100 dark:bg-[#0b0f19] border border-slate-300 dark:border-[#1e293b] rounded-lg pl-9 pr-3 py-2 text-xs text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-500 transition"
+      onkeyup="filterMenu()"
+      placeholder="메뉴 검색..."
+      type="text"/>
+  </div>
+</div>
+
 <!-- GUIDE 대카테고리 -->
 <div>
 <button class="w-full text-left flex items-center justify-between px-2 mb-2 font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider text-[11px] hover:text-slate-700 dark:hover:text-slate-300 transition" onclick="handleCategoryClick(event, 'server-contents-overview', 'GUIDE', '📔 서버 컨텐츠', 'guide-menu', 'guide-chevron')">
@@ -2365,6 +2596,10 @@
       }
 
       document.querySelector('main').scrollTop = 0;
+      // 모바일에서 문서를 선택하면 사이드 메뉴를 자동으로 닫아 본문을 바로 보여준다.
+      if (window.innerWidth < 768) {
+        closeMobileMenu();
+      }
     }
 
     function setupRpImageFallbacks() {
@@ -2416,15 +2651,75 @@
       }
     }
 
-    function filterMenu() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const buttons = document.querySelectorAll('#sidebarNav button');
+    function toggleMobileMenu() {
+      if (window.innerWidth >= 768) return;
 
+      const sidebar = document.querySelector('body > div.flex-1 > aside');
+      const backdrop = document.getElementById('mobileMenuBackdrop');
+      const button = document.getElementById('mobileMenuBtn');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (!sidebar) return;
+
+      const isOpen = sidebar.classList.toggle('mobile-menu-open');
+      if (backdrop) backdrop.classList.toggle('mobile-backdrop-open', isOpen);
+      if (button) button.setAttribute('aria-expanded', String(isOpen));
+      if (button) button.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+      if (icon) icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+
+      // 메뉴를 열었을 때 검색창에 기존 검색어를 동기화
+      const desktopSearch = document.getElementById('searchInput');
+      const mobileSearch = document.getElementById('mobileSearchInput');
+      if (isOpen && desktopSearch && mobileSearch) {
+        mobileSearch.value = desktopSearch.value;
+      }
+    }
+
+    function closeMobileMenu() {
+      const sidebar = document.querySelector('body > div.flex-1 > aside');
+      const backdrop = document.getElementById('mobileMenuBackdrop');
+      const button = document.getElementById('mobileMenuBtn');
+      const icon = document.getElementById('mobileMenuIcon');
+
+      if (sidebar) sidebar.classList.remove('mobile-menu-open');
+      if (backdrop) backdrop.classList.remove('mobile-backdrop-open');
+      if (button) {
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', '메뉴 열기');
+      }
+      if (icon) icon.className = 'fa-solid fa-bars';
+    }
+
+    function filterMenu() {
+      const desktopSearch = document.getElementById('searchInput');
+      const mobileSearch = document.getElementById('mobileSearchInput');
+      const activeSearch = window.innerWidth < 768 ? mobileSearch : desktopSearch;
+      const query = (activeSearch ? activeSearch.value : '').toLowerCase().trim();
+
+      // 두 검색창의 값은 항상 동기화
+      if (desktopSearch && mobileSearch && activeSearch) {
+        desktopSearch.value = activeSearch.value;
+        mobileSearch.value = activeSearch.value;
+      }
+
+      const buttons = document.querySelectorAll('#sidebarNav button.nav-btn, #sidebarNav > div:not(#mobileMenuSearchWrap) button.nav-btn');
       buttons.forEach(btn => {
         const text = btn.innerText.toLowerCase();
-        btn.style.display = text.includes(query) ? 'block' : 'none';
+        btn.style.display = text.includes(query) ? '' : 'none';
       });
+
+      // 검색 중에는 접혀 있는 하위 메뉴도 펼쳐서 결과를 찾기 쉽게 한다.
+      if (query && window.innerWidth < 768) {
+        ['guide-menu','contents-menu','job-submenu','law-menu','story-rp-menu','org-rp-menu'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.remove('hidden');
+        });
+      }
     }
+
+    // 화면을 회전하거나 데스크톱/모바일 폭을 오갈 때 메뉴 상태를 안전하게 정리
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 768) closeMobileMenu();
+    });
   </script>
 
 <script id="main-scroll-reset">
