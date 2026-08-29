@@ -1795,7 +1795,6 @@
         const item = btn.closest('.nav-law-item');
         const collapsed = item.classList.toggle('collapsed');
         btn.setAttribute('aria-expanded', String(!collapsed));
-        showPage(btn.getAttribute('data-page'));
       });
     });
   }
@@ -1806,14 +1805,49 @@
     });
   }
 
+  // 실제 내용이 있는 메뉴만 처음부터 끝까지 순서대로 연결합니다.
+  // 법률의 상위 4개 항목은 내용 페이지가 아니라 하위 메뉴를 여닫는 용도입니다.
+  function getNavigationPages(){
+    const lawParentIds = new Set(['server-law', 'official-law', 'org-rp-law', 'rp-law']);
+    return PAGES.filter(p => !lawParentIds.has(p.id));
+  }
+
   function showPage(id){
-    const page = PAGES.find(p => p.id === id);
+    const pages = getNavigationPages();
+    const pageIndex = pages.findIndex(p => p.id === id);
+    const page = pages[pageIndex];
     if(!page) return;
+
+    const prevPage = pageIndex > 0 ? pages[pageIndex - 1] : null;
+    const nextPage = pageIndex < pages.length - 1 ? pages[pageIndex + 1] : null;
+
+    const navHtml = `
+      <div class="page-navigation" style="display:flex;justify-content:space-between;gap:12px;margin-top:42px;padding-top:22px;border-top:1px solid var(--border);">
+        <button type="button" data-page-nav="${prevPage ? prevPage.id : ''}" ${prevPage ? '' : 'disabled'}
+          style="flex:1;min-width:0;text-align:left;padding:12px 14px;border:1px solid var(--border);border-radius:8px;background:var(--chip-bg);color:var(--text);font-family:inherit;cursor:${prevPage ? 'pointer' : 'default'};opacity:${prevPage ? '1' : '.45'};">
+          <div style="font-size:11px;color:var(--text-faint);margin-bottom:4px;">${prevPage ? '← 이전 메뉴' : '← 이전 메뉴 없음'}</div>
+          <div style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${prevPage ? prevPage.title : '처음 메뉴입니다'}</div>
+        </button>
+        <button type="button" data-page-nav="${nextPage ? nextPage.id : ''}" ${nextPage ? '' : 'disabled'}
+          style="flex:1;min-width:0;text-align:right;padding:12px 14px;border:1px solid var(--border);border-radius:8px;background:var(--chip-bg);color:var(--text);font-family:inherit;cursor:${nextPage ? 'pointer' : 'default'};opacity:${nextPage ? '1' : '.45'};">
+          <div style="font-size:11px;color:var(--text-faint);margin-bottom:4px;">${nextPage ? '다음 메뉴 →' : '다음 메뉴 없음'}</div>
+          <div style="font-size:13px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${nextPage ? nextPage.title : '마지막 메뉴입니다'}</div>
+        </button>
+      </div>
+    `;
+
     contentEl.innerHTML = `
       <div class="eyebrow">${page.eyebrow || page.cat}</div>
       <h1>${page.title}</h1>
       <div class="body-text">${page.body}</div>
+      ${navHtml}
     `;
+
+    contentEl.querySelectorAll('button[data-page-nav]').forEach(btn => {
+      if(btn.disabled) return;
+      btn.addEventListener('click', () => showPage(btn.getAttribute('data-page-nav')));
+    });
+
     highlightActive(id);
     closeSearch();
     window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
@@ -1822,7 +1856,7 @@
 
   function showHome(){
     contentEl.innerHTML = `
-      <h1>돌핀 가이드</h1>
+      <h1>엑시트 가이드</h1>
       <div class="body-text">좌측 메뉴에서 항목을 선택하세요.</div>
     `;
     highlightActive(null);
