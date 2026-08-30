@@ -383,8 +383,49 @@
   .body-text h4{ font-size: 15px; font-weight: 700; margin: 14px 0 6px 0; color: var(--text); }
   .body-text p{ margin: 8px 0; }
 
+  .mobile-menu-btn,
+  .mobile-menu-backdrop{ display:none; }
+
   @media (max-width: 860px){
-    .sidebar{ display:none; }
+    .mobile-menu-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      margin-right:2px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:var(--chip-bg);
+      color:var(--text);
+      cursor:pointer;
+      flex-shrink:0;
+    }
+    .mobile-menu-btn svg{ width:18px; height:18px; }
+
+    .mobile-menu-backdrop{
+      position:fixed;
+      inset:64px 0 0 0;
+      background:rgba(0,0,0,.35);
+      z-index:29;
+    }
+    .mobile-menu-backdrop.open{ display:block; }
+
+    .sidebar{
+      display:none;
+      position:fixed;
+      top:64px;
+      left:0;
+      bottom:0;
+      width:min(300px, 88vw);
+      overflow-y:auto;
+      background:var(--bg);
+      z-index:30;
+      border-right:1px solid var(--border);
+      box-sizing:border-box;
+    }
+    .sidebar.mobile-open{ display:block; }
+
     .content{ padding: 40px 24px; }
     .theme-opt span{ display:none; }
     .topbar-right{ display:none; }
@@ -483,6 +524,13 @@
 
   <div class="topbar">
     <div class="topbar-left">
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="6" x2="20" y2="6"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+      </button>
       <img class="logo" src="assets/exit-logo.png" alt="엑시트 로고">
       <span class="brand">EXIT KR</span>
     </div>
@@ -502,6 +550,7 @@
   </div>
 
   <div class="layout">
+    <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
     <aside class="sidebar">
       <div class="search-wrap">
         <div class="search-box">
@@ -1298,19 +1347,7 @@
 
 <hr>
 
-<h2>5. 사유지 게릴라 범위 안내</h2>
-<div style="margin:20px 0 8px 0;">
-<img src="assets/사유지게릴라_전체범위.png" alt="사유지 게릴라 전체 범위" style="display:block;width:100%;max-width:100%;height:auto;border-radius:8px;">
-</div>
-<p style="margin:0 0 18px 0;text-align:center;"><strong>전체 범위</strong></p>
-<div style="margin:20px 0 8px 0;">
-<img src="assets/사유지게릴라_A진영.png" alt="사유지 게릴라 A진영" style="display:block;width:100%;max-width:100%;height:auto;border-radius:8px;">
-</div>
-<p style="margin:0 0 18px 0;text-align:center;"><strong>A진영</strong></p>
-<div style="margin:20px 0 8px 0;">
-<img src="assets/사유지게릴라_B진영.png" alt="사유지 게릴라 B진영" style="display:block;width:100%;max-width:100%;height:auto;border-radius:8px;">
-</div>
-<p style="margin:0 0 18px 0;text-align:center;"><strong>B진영</strong></p>
+<h2>5. 사유지 게릴라</h2>
 <div style="margin:20px 0 8px 0;">
 <img src="assets/사유지게릴라_말농장.png" alt="말농장" style="display:block;width:100%;max-width:100%;height:auto;border-radius:8px;">
 </div>
@@ -1318,7 +1355,15 @@
 <div style="margin:20px 0 8px 0;">
 <img src="assets/사유지게릴라_흑사회저택.png" alt="흑사회 저택" style="display:block;width:100%;max-width:100%;height:auto;border-radius:8px;">
 </div>
-<p style="margin:0;text-align:center;"><strong>&lt; 흑사회 저택 &gt;</strong></p>`,
+<p style="margin:0 0 18px 0;text-align:center;"><strong>&lt; 흑사회 저택 &gt;</strong></p>
+<div style="margin:20px 0 8px 0;">
+<img src="assets/카르텔_사유지.png" alt="카르텔 사유지" style="display:block;width:100%;max-width:100%;height:auto;border-radius:8px;">
+</div>
+<p style="margin:0 0 18px 0;text-align:center;"><strong>&lt; 카르텔 사유지 &gt;</strong></p>
+<div style="margin:20px 0 8px 0;">
+<img src="assets/크립스_사유지.png" alt="크립스 사유지" style="display:block;width:100%;max-width:100%;height:auto;border-radius:8px;">
+</div>
+<p style="margin:0;text-align:center;"><strong>&lt; 크립스 사유지 &gt;</strong></p>`,
     'org-rp-law-child-6': `<h2>1. 기본 규칙</h2>
 <ul>
 <li>RP 가능 인원 : 선포 조직 및 상대 조직 인원 최소 1명이상 일 경우 가능</li>
@@ -1731,6 +1776,34 @@
 
   const sidebarNav = document.getElementById('sidebarNav');
   const contentEl = document.getElementById('content');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
+  const sidebarEl = document.querySelector('.sidebar');
+
+  function closeMobileMenu(){
+    if(!sidebarEl || !mobileMenuBtn || !mobileMenuBackdrop) return;
+    sidebarEl.classList.remove('mobile-open');
+    mobileMenuBackdrop.classList.remove('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleMobileMenu(){
+    if(!sidebarEl || !mobileMenuBtn || !mobileMenuBackdrop) return;
+    const isOpen = sidebarEl.classList.toggle('mobile-open');
+    mobileMenuBackdrop.classList.toggle('open', isOpen);
+    mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMobileMenu();
+  });
+
+  mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+
+  window.addEventListener('resize', () => {
+    if(window.innerWidth > 860) closeMobileMenu();
+  });
 
   function renderSidebar(){
     sidebarNav.innerHTML = CATEGORIES.map(cat => {
@@ -1778,7 +1851,10 @@
     }).join('');
 
     sidebarNav.querySelectorAll('button[data-page]').forEach(btn => {
-      btn.addEventListener('click', () => showPage(btn.getAttribute('data-page')));
+      btn.addEventListener('click', () => {
+        showPage(btn.getAttribute('data-page'));
+        closeMobileMenu();
+      });
     });
 
     sidebarNav.querySelectorAll('.nav-group-title').forEach(btn => {
